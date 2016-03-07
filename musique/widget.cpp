@@ -6,16 +6,14 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-/*
-    QPalette palette;
-    palette.setColor(QPalette::Base, QColor(Qt::black));
 
-    ui->diese1->setPalette(palette);
-    ui->diese2->setPalette(palette);
-    ui->diese3->setPalette(palette);
-    ui->diese4->setPalette(palette);
-    ui->diese5->setPalette(palette);
-*/
+    this->setMinimumSize(420, 500);
+    this->setMaximumSize(600, 600);
+
+
+//    QPalette *palette = new QPalette();
+//    palette->setColor(QPalette::Base, QColor(Qt::green));
+
     //Création des labels
     labelInstru = new QLabel("Choisir un instrument : ");
     labelPartition = new QLabel("Choisir une partition : ");
@@ -48,24 +46,25 @@ Widget::Widget(QWidget *parent) :
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
 
-    /*
-    layoutPiano->addWidget(ui->do_2, 0, 0);
-    layoutPiano->addWidget(ui->re, 0, 1);
-    layoutPiano->addWidget(ui->mi, 0, 2);
-    layoutPiano->addWidget(ui->fa, 0, 3);
-    layoutPiano->addWidget(ui->sol, 0, 4);
-    layoutPiano->addWidget(ui->la, 0, 5);
-    layoutPiano->addWidget(ui->si, 0, 6);
-*/
+
+    // creation de la partition
+    widgetPartition = new QWidget();
+    part = new Partition(widgetPartition);
+
+    QPalette p( widgetPartition->palette() );
+    p.setColor( QPalette::Base, Qt::cyan );
+   widgetPartition->setPalette( p );
 
     //Création du layout principale
     layoutPrincipal = new QVBoxLayout;
     layoutPrincipal->addLayout(layoutChoix);
-    layoutPrincipal->addWidget(ui->widget);
+    layoutPrincipal->addWidget(widgetPartition);
     layoutPrincipal->addLayout(layoutPiano);
 
     this->setLayout(layoutPrincipal);
+
 }
+
 
 Widget::~Widget()
 {

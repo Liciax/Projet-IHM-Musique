@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>694</width>
-    <height>360</height>
+    <width>408</width>
+    <height>208</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>160</y>
+     <x>10</x>
+     <y>10</y>
      <width>381</width>
      <height>181</height>
     </rect>
@@ -33,6 +33,9 @@
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Mi</string>
@@ -53,6 +56,9 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>Sol</string>
     </property>
@@ -72,6 +78,9 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>Si</string>
     </property>
@@ -90,6 +99,9 @@
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Re</string>
@@ -113,6 +125,9 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>Do</string>
     </property>
@@ -131,6 +146,9 @@
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>La</string>
@@ -151,6 +169,9 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>Fa</string>
     </property>
@@ -158,20 +179,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <zorder>mi</zorder>
-   <zorder>pushButton_11</zorder>
-   <zorder>pushButton_13</zorder>
-   <zorder>re</zorder>
-   <zorder>do_2</zorder>
-   <zorder>pushButton_12</zorder>
-   <zorder>pushButton_10</zorder>
-   <zorder>mi</zorder>
-   <zorder>pushButton_11</zorder>
-   <zorder>pushButton_13</zorder>
-   <zorder>re</zorder>
-   <zorder>do_2</zorder>
-   <zorder>pushButton_12</zorder>
-   <zorder>pushButton_10</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

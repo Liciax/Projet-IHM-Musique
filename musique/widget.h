@@ -9,6 +9,9 @@
 #include <QPushButton>
 #include <QPalette>
 #include <QColor>
+#include <QPainter>
+#include <QPaintEvent>
+#include "partition.h"
 
 namespace Ui {
 class Widget;
@@ -24,6 +27,7 @@ public:
 
 private:
     Ui::Widget *ui;
+    Partition * part;
 
     QVBoxLayout *layoutPrincipal;
     QGridLayout *layoutChoix;
@@ -37,6 +41,10 @@ private:
 
     QPushButton *b_valider;
     QPushButton *b_retour;
+
+      QWidget *widgetPartition;
+//    QPainter *painter;
+//    QRegion region;
 };
 
 #endif // WIDGET_H
