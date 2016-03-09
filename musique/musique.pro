@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui
+QT += svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,3 +21,8 @@ HEADERS  += widget.h \
     partition.h
 
 FORMS    += widget.ui
+
+OTHER_FILES +=
+
+RESOURCES += \
+    ressources.qrc

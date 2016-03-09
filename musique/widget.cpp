@@ -1,15 +1,21 @@
 #include "widget.h"
 #include "ui_widget.h"
 
+const int IdRole = Qt::UserRole;
+
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
+//    instru = Piano;
+
     ui->setupUi(this);
 
-    this->setMinimumSize(420, 500);
-    this->setMaximumSize(600, 600);
+    this->setWindowIcon(QPixmap(":icone.png"));
+    this->setWindowTitle("Musicodibou");
 
+    this->setMinimumSize(750, 500);
+    this->setMaximumSize(800, 600);
 
 //    QPalette *palette = new QPalette();
 //    palette->setColor(QPalette::Base, QColor(Qt::green));
@@ -46,14 +52,17 @@ Widget::Widget(QWidget *parent) :
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
 
-
     // creation de la partition
     widgetPartition = new QWidget();
     part = new Partition(widgetPartition);
+    svg = new QSvgWidget(":clef_sol.svg", widgetPartition);
+    svg->resize(60,120); // Retailler l'image
+    svg->move(5,4);  //Deplacer l'image
+    svg->renderer();
 
-    QPalette p( widgetPartition->palette() );
-    p.setColor( QPalette::Base, Qt::cyan );
-   widgetPartition->setPalette( p );
+//    QPalette p( widgetPartition->palette() );
+//    p.setColor( QPalette::Base, Qt::cyan );
+//   widgetPartition->setPalette( p );
 
     //Création du layout principale
     layoutPrincipal = new QVBoxLayout;
@@ -63,8 +72,23 @@ Widget::Widget(QWidget *parent) :
 
     this->setLayout(layoutPrincipal);
 
+//    connect(boxIntrument, SIGNAL(activated(int)),
+//            this, SLOT(instrumentChange()));
+
+//    instrumentChange();
+
 }
 
+//void Widget::setInstrument(Instrument inst) {
+//    this->instru = inst;
+//    update();
+//}
+
+//void Widget::instrumentChange() {
+//    instru = Instrument(boxIntrument->itemData(
+//                            boxIntrument->currentIndex(), IdRole).toInt());
+//    this->setInstrument(instru);
+//}
 
 Widget::~Widget()
 {

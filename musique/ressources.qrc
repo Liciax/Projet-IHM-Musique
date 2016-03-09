@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>clef_sol.svg</file>
+        <file>musique.png</file>
+        <file>icone.png</file>
+    </qresource>
+</RCC>

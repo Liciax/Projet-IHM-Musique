@@ -11,6 +11,8 @@
 #include <QColor>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QSvgWidget>
+#include <QPixmap>
 #include "partition.h"
 
 namespace Ui {
@@ -22,10 +24,21 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
+
+//   enum Instrument {Piano, Xylophone};
+
     explicit Widget(QWidget *parent = 0);
     ~Widget();
 
+//private slots:
+//    void instrumentChange();
+
+//public slots:
+//     void setInstrument(Instrument instru);
+
 private:
+//    Instrument instru;
+
     Ui::Widget *ui;
     Partition * part;
 
@@ -42,9 +55,9 @@ private:
     QPushButton *b_valider;
     QPushButton *b_retour;
 
-      QWidget *widgetPartition;
-//    QPainter *painter;
-//    QRegion region;
+    QWidget *widgetPartition;
+
+    QSvgWidget *svg;
 };
 
 #endif // WIDGET_H
