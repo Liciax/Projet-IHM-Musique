@@ -52,7 +52,7 @@ Widget::Widget(QWidget *parent) :
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
 
-    // creation de la partition
+    //Création de la partition
     widgetPartition = new QWidget();
     part = new Partition(widgetPartition);
     svg = new QSvgWidget(":clef_sol.svg", widgetPartition);
@@ -69,6 +69,10 @@ Widget::Widget(QWidget *parent) :
     layoutPrincipal->addLayout(layoutChoix);
     layoutPrincipal->addWidget(widgetPartition);
     layoutPrincipal->addLayout(layoutPiano);
+
+
+
+   // QSound bells("mysounds/bells.wav");
 
     this->setLayout(layoutPrincipal);
 
