@@ -72,7 +72,7 @@ Widget::Widget(QWidget *parent) :
 
 
 
-   // QSound bells("mysounds/bells.wav");
+//    QSound bells("mysounds/bells.wav");
 
     this->setLayout(layoutPrincipal);
 
