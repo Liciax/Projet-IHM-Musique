@@ -11,10 +11,10 @@
 #include <QColor>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QSvgWidget>
-#include <QPixmap>
+//#include <QSvgWidget>
 #include <QSound>
 #include <QString>
+#include <QSignalMapper>
 #include "partition.h"
 
 namespace Ui {
@@ -34,12 +34,14 @@ public:
 //    void instrumentChange();
 
 public slots:
-     void playSound();
+//     void playSound();
+    void handleButton(int note);
 
 private:
 
     Ui::Widget *ui;
     Partition * part;
+    QSignalMapper * mapper;
 
     QVBoxLayout *layoutPrincipal;
     QGridLayout *layoutChoix;
@@ -54,7 +56,7 @@ private:
 
     QWidget *widgetPartition;
 
-    QSvgWidget *svg;
+    //QSvgWidget *svg;
 };
 
 #endif // WIDGET_H
