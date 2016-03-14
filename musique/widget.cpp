@@ -15,19 +15,13 @@ Widget::Widget(QWidget *parent) :
     this->setWindowTitle("Musicodibou");
 
     this->setMinimumSize(750, 500);
-    this->setMaximumSize(800, 600);
+    this->setMaximumSize(750, 500);
 
 //    QPalette *palette = new QPalette();
 //    palette->setColor(QPalette::Base, QColor(Qt::green));
 
     //Création des labels
-    labelInstru = new QLabel("Choisir un instrument : ");
     labelPartition = new QLabel("Choisir une partition : ");
-
-    //ComboBox pour les instruments
-    boxIntrument = new QComboBox;
-    boxIntrument->addItem("Xylophone");
-    boxIntrument->addItem("Piano");
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
@@ -42,12 +36,11 @@ Widget::Widget(QWidget *parent) :
 
     //Création du layout des sélection/choix
     layoutChoix = new QGridLayout;
-    layoutChoix->addWidget(labelInstru, 0, 0);
-    layoutChoix->addWidget(boxIntrument, 0, 1, 1, 2);
-    layoutChoix->addWidget(labelPartition, 1, 0);
-    layoutChoix->addWidget(boxPartition, 1, 1 ,1 ,2);
-    layoutChoix->addWidget(b_retour, 2, 1);
-    layoutChoix->addWidget(b_valider, 2, 2);
+
+    layoutChoix->addWidget(labelPartition, 0, 0);
+    layoutChoix->addWidget(boxPartition, 0, 1 ,1 ,2);
+    layoutChoix->addWidget(b_retour, 1, 1);
+    layoutChoix->addWidget(b_valider, 1, 2);
 
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
@@ -70,23 +63,25 @@ Widget::Widget(QWidget *parent) :
     layoutPrincipal->addWidget(widgetPartition);
     layoutPrincipal->addLayout(layoutPiano);
 
+//    QSound bells(":ff-040.wav");
 
 
-//    QSound bells("mysounds/bells.wav");
+//    QSound::play(":ff-040.wav");
 
     this->setLayout(layoutPrincipal);
 
-//    connect(boxIntrument, SIGNAL(activated(int)),
-//            this, SLOT(instrumentChange()));
+    QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
 
 //    instrumentChange();
 
 }
 
-//void Widget::setInstrument(Instrument inst) {
-//    this->instru = inst;
-//    update();
-//}
+void Widget::playSound() {
+    QSound::play(":ff-040.wav");
+//    qDebug( "C Style Debug Message" );
+
+}
+
 
 //void Widget::instrumentChange() {
 //    instru = Instrument(boxIntrument->itemData(

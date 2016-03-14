@@ -13,6 +13,8 @@
 #include <QPaintEvent>
 #include <QSvgWidget>
 #include <QPixmap>
+#include <QSound>
+#include <QString>
 #include "partition.h"
 
 namespace Ui {
@@ -25,19 +27,16 @@ class Widget : public QWidget
 
 public:
 
-//   enum Instrument {Piano, Xylophone};
-
     explicit Widget(QWidget *parent = 0);
     ~Widget();
 
 //private slots:
 //    void instrumentChange();
 
-//public slots:
-//     void setInstrument(Instrument instru);
+public slots:
+     void playSound();
 
 private:
-//    Instrument instru;
 
     Ui::Widget *ui;
     Partition * part;
@@ -46,10 +45,8 @@ private:
     QGridLayout *layoutChoix;
     QGridLayout *layoutPiano;
 
-    QComboBox *boxIntrument;
     QComboBox *boxPartition;
 
-    QLabel *labelInstru;
     QLabel *labelPartition;
 
     QPushButton *b_valider;
