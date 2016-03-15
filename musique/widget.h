@@ -10,6 +10,8 @@
 #include <QPalette>
 #include <QColor>
 #include <QPainter>
+#include <QBrush>
+#include <QRectF>
 #include <QPaintEvent>
 //#include <QSvgWidget>
 #include <QSound>
@@ -30,11 +32,7 @@ public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
 
-//private slots:
-//    void instrumentChange();
-
 public slots:
-//     void playSound();
     void handleButton(int note);
 
 private:

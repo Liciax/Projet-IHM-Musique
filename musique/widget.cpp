@@ -14,14 +14,14 @@ Widget::Widget(QWidget *parent) :
     this->setWindowIcon(QPixmap(":icone.png"));
     this->setWindowTitle("Musicodibou");
 
-    this->setMinimumSize(750, 500);
-    this->setMaximumSize(750, 500);
+    this->setMinimumSize(750, 550);
+    this->setMaximumSize(750, 550);
 
 //    QPalette *palette = new QPalette();
 //    palette->setColor(QPalette::Base, QColor(Qt::green));
 
     //Création des labels
-    labelPartition = new QLabel("Choisir une partition : ");
+    labelPartition = new QLabel("<b>Choisir une partition : </b>");
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
@@ -31,14 +31,15 @@ Widget::Widget(QWidget *parent) :
     //PushBoutton valider et retour
     b_valider = new QPushButton("Valider", this);
     b_valider->setCursor(Qt::PointingHandCursor);
+
     b_retour = new QPushButton("Retour", this);
     b_retour->setCursor(Qt::PointingHandCursor);
 
     //Création du layout des sélection/choix
     layoutChoix = new QGridLayout;
 
-    layoutChoix->addWidget(labelPartition, 0, 0);
-    layoutChoix->addWidget(boxPartition, 0, 1 ,1 ,2);
+    layoutChoix->addWidget(labelPartition, 0, 0, 1, 2);
+    layoutChoix->addWidget(boxPartition, 0, 1, 1, 2);
     layoutChoix->addWidget(b_retour, 1, 1);
     layoutChoix->addWidget(b_valider, 1, 2);
 
@@ -63,56 +64,52 @@ Widget::Widget(QWidget *parent) :
     layoutPrincipal->addWidget(widgetPartition);
     layoutPrincipal->addLayout(layoutPiano);
 
-//    QSound bells(":ff-040.wav");
-
-//    QSound::play(":ff-040.wav");
-
     this->setLayout(layoutPrincipal);
 
-
+    //mapper de note et son
     mapper = new QSignalMapper(this);
 
     connect(ui->do_1, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->do_1, 1); // Number to be passed in the slot
+    mapper->setMapping(ui->do_1, 1);
 
     connect(ui->re_1, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->re_1, 2); // Number to be passed in the slot
+    mapper->setMapping(ui->re_1, 2);
 
     connect(ui->mi_1, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->mi_1, 3); // Number to be passed in the slot
+    mapper->setMapping(ui->mi_1, 3);
 
     connect(ui->fa_1, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->fa_1, 4); // Number to be passed in the slot
+    mapper->setMapping(ui->fa_1, 4);
 
     connect(ui->sol_1, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->sol_1, 5); // Number to be passed in the slot
+    mapper->setMapping(ui->sol_1, 5);
 
     connect(ui->la_1, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->la_1, 6); // Number to be passed in the slot
+    mapper->setMapping(ui->la_1, 6);
 
     connect(ui->si_1, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->si_1, 7); // Number to be passed in the slot
+    mapper->setMapping(ui->si_1, 7);
 
     connect(ui->do_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->do_2, 8); // Number to be passed in the slot
+    mapper->setMapping(ui->do_2, 8);
 
     connect(ui->re_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->re_2, 9); // Number to be passed in the slot
+    mapper->setMapping(ui->re_2, 9);
 
     connect(ui->mi_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->mi_2, 10); // Number to be passed in the slot
+    mapper->setMapping(ui->mi_2, 10);
 
     connect(ui->fa_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->fa_2, 11); // Number to be passed in the slot
+    mapper->setMapping(ui->fa_2, 11);
 
     connect(ui->sol_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->sol_2, 12); // Number to be passed in the slot
+    mapper->setMapping(ui->sol_2, 12);
 
     connect(ui->la_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->la_2, 13); // Number to be passed in the slot
+    mapper->setMapping(ui->la_2, 13);
 
     connect(ui->si_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    mapper->setMapping(ui->si_2, 14); // Number to be passed in the slot
+    mapper->setMapping(ui->si_2, 14);
 
     connect(mapper, SIGNAL(mapped(int)), this, SLOT(handleButton(int)));
 
