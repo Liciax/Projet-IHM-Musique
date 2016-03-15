@@ -126,54 +126,54 @@ Widget::Widget(QWidget *parent) :
 void Widget::handleButton(int note) {
     switch(note) {
         case 1: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/doM.wav");
+            QSound::play("../musique/son/doM.wav");
             break;
         }
         case 2: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/reM.wav");
+            QSound::play("../musique/son/reM.wav");
             break;
         }
         case 3: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/miM.wav");
+            QSound::play("../musique/son/miM.wav");
             break;
         }
         case 4: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/faM.wav");
+            QSound::play("../musique/son/faM.wav");
             break;
         }
         case 5: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/solM.wav");
+            QSound::play("../musique/son/solM.wav");
             break;
         }
         case 6: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/laM.wav");
+            QSound::play("../musique/son/laM.wav");
             break;
         }
         case 7: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/siM.wav");
+            QSound::play("../musique/son/siM.wav");
             break;
         }
         case 8: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/dom.wav");
+            QSound::play("../musique/son/dom.wav");
             break;
         }
         case 9: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/rem.wav");
+            QSound::play("../musique/son/rem.wav");
             break;}
         case 10: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/mim.wav");
+            QSound::play("../musique/son/mim.wav");
             break;}
         case 11: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/fam.wav");
+            QSound::play("../musique/son/fam.wav");
             break;}
         case 12: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/solm.wav");
+            QSound::play("../musique/son/solm.wav");
             break;}
         case 13: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/lam.wav");
+            QSound::play("../musique/son/lam.wav");
             break;}
         case 14: {
-            QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/son/sim.wav");
+            QSound::play("../musique/son/sim.wav");
             break;}
 
     }

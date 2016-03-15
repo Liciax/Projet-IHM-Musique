@@ -5,6 +5,7 @@
 #include <QColor>
 #include <QPainter>
 #include <QPaintEvent>
+#include "monreaderamoi.h"
 
 class Partition : public QWidget
 {
@@ -16,6 +17,10 @@ public :
      void paintEvent(QPaintEvent *event);
      QSize minimumSizeHint() const;
      QSize sizeHint() const;
+     void loadPartition(QString s);
+
+private:
+     monReaderAMoi *liseur;
 
 };
 

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui
+QT += core gui xml
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
@@ -15,10 +15,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         widget.cpp \
-    partition.cpp
+    partition.cpp \
+    monreaderamoi.cpp
 
 HEADERS  += widget.h \
-    partition.h
+    partition.h \
+    monreaderamoi.h
 
 FORMS    += widget.ui
 
