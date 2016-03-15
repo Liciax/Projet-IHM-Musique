@@ -2,6 +2,5 @@
     <qresource prefix="/">
         <file>clef_sol.svg</file>
         <file>icone.png</file>
-        <file>ff-040.wav</file>
     </qresource>
 </RCC>
