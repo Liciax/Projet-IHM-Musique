@@ -39,104 +39,20 @@ void Partition::paintEvent(QPaintEvent *event) {
   // essaie des note des musique
   //x1, y1, x2, y2
 
-  //(27.6 * (i*7.4))
+//  for(i = 1; i <= liseur->getListeNotes().size(); i++) {
+  for(i = liseur->getListeNotes().size(); i >= 1; i--) {
+//      switch(liseur->getListeNotes().at(i-1)) {
+//            case 1:
+
+//            case 3
+//      }
 
 
-  for(i = 1; i <= liseur->getListeNotes().size(); i++) {
-      painter.drawEllipse(QRectF(40*i, (13.2 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15));//x, y , width, height
+      qDebug() << i  << " et "<< liseur->getListeNotes().at(i-1)  << " et "<< 13.2 + (liseur->getListeNotes().at(i-1)*7.4);
+
+      painter.drawEllipse(QRectF(40*i, (5.8 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15));//x, y , width, height
       painter.drawRect( (40*i)+14 ,-14+(7.7*liseur->getListeNotes().at(i-1)) ,1 ,30);
 
   }
-
-/*
-  i++;
-
-  painter.drawEllipse(QRectF(40*i, (27.6 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15));
-  painter.drawRect( (40*i)+14 ,2.86+(8.21*liseur->getListeNotes().at(i-1)) ,1 ,30);
-
-  i++;
-
-  painter.drawEllipse(QRectF( 40*i , (27.6 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15));
-  painter.drawRect( (40*i)+14 ,2.86+(8.21*liseur->getListeNotes().at(i-1)) ,1 ,30);
-
-    i++;
-
-    painter.drawEllipse(QRectF(40*i, (27.6 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15)); //mi je crois
-    //x, y , width, height
-    painter.drawRect( (40*i)+14 ,2.86+(8.21*liseur->getListeNotes().at(i-1)) ,1 ,30);
-
-    i++;
-
-    painter.drawEllipse(QRectF(40*i, (27.6 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15)); //mi je crois
-    //x, y , width, height
-    painter.drawRect( (40*i)+14 ,2.86+(8.21*liseur->getListeNotes().at(i-1)) ,1 ,30);
-
-    i++;
-
-    painter.drawEllipse(QRectF(40*i, (27.6 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15)); //mi je crois
-    //x, y , width, height
-    painter.drawRect( (40*i)+14 ,2.86+(8.21*liseur->getListeNotes().at(i-1)) ,1 ,30);
-
-    i++;
-
-    painter.drawEllipse(QRectF(40*i, (27.6 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15)); //mi je crois
-    //x, y , width, height
-    painter.drawRect( (40*i)+14 ,2.86+(8.21*liseur->getListeNotes().at(i-1)) ,1 ,30);
-
-    i++;
-
-    painter.drawEllipse(QRectF(40*i, (27.6 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15)); //mi je crois
-    //x, y , width, height
-    painter.drawRect( (40*i)+14 ,2.86+(8.21*liseur->getListeNotes().at(i-1)) ,1 ,30);
-
-    i++;*/
-
-//  painter.drawEllipse(QRectF(40*i, 35, 15, 15));//x, y , width, height
-//  painter.drawRect( (40*i)+14 ,10 ,1 ,30);
-
-//  i++;
-
-//  painter.drawEllipse(QRectF(40*i, 42, 15, 15));
-//  painter.drawRect( (40*i)+14 ,20 ,1 ,30);
-
-//  i++;
-
-//  painter.drawEllipse(QRectF( 40*i , 50, 15, 15));
-//  painter.drawRect( (40*i)+14 ,28 ,1 ,30);
-
-//    i++;
-
-//    painter.drawEllipse(QRectF(40*i, 57, 15, 15)); //mi je crois
-//    //x, y , width, height
-//    painter.drawRect( (40*i)+14 ,36 ,1 ,30);
-
-//    i++;
-
-//    painter.drawEllipse(QRectF(40*i, 65, 15, 15)); //mi je crois
-//    //x, y , width, height
-//    painter.drawRect( (40*i)+14 ,44 ,1 ,30);
-
-//    i++;
-
-//    painter.drawEllipse(QRectF(40*i, 72, 15, 15)); //mi je crois
-//    //x, y , width, height
-//    painter.drawRect( (40*i)+14 ,52 ,1 ,30);
-
-//    i++;
-
-//    painter.drawEllipse(QRectF(40*i, 79, 15, 15)); //mi je crois
-//    //x, y , width, height
-//    painter.drawRect( (40*i)+14 ,60 ,1 ,30);
-
-//    i++;
-
-//  painter.drawEllipse(QRectF(40*i, 30, 15, 15)); //mi je crois
-//  //x, y , width, height
-//  painter.drawRect( (40*i)+14 ,10 ,1 ,30);
-//    i++;
-//  painter.drawEllipse(QRectF( 40*i , 45, 15, 15));
-
-//  //painter.drawEllipse(QRectF(60, 45, 15, 15));
-//  painter.drawRect( (40*i)+14 ,20 ,1 ,30);
 }
 
