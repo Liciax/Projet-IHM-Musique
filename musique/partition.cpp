@@ -15,7 +15,7 @@ QSize Partition::minimumSizeHint() const
 
 QSize Partition::sizeHint() const
 {
-    return QSize(750, 180);
+    return QSize(800, 180);
 }
 
 void Partition::loadPartition(QString s) {
@@ -28,11 +28,11 @@ void Partition::paintEvent(QPaintEvent *event) {
   QPainter painter(this);
   painter.setPen(Qt::black);
 
-  painter.drawLine(10,50, 710, 50);
-  painter.drawLine(10,65, 710, 65);
-  painter.drawLine(10,80, 710, 80);
-  painter.drawLine(10,95, 710, 95);
-  painter.drawLine(10,110, 710, 110);
+  painter.drawLine(10,50, 750, 50);
+  painter.drawLine(10,65, 750, 65);
+  painter.drawLine(10,80, 750, 80);
+  painter.drawLine(10,95, 750, 95);
+  painter.drawLine(10,110, 750, 110);
 
   painter.setBrush(Qt::SolidPattern);
 

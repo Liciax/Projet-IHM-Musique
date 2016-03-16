@@ -14,8 +14,8 @@ Widget::Widget(QWidget *parent) :
     this->setWindowIcon(QPixmap(":icone.png"));
     this->setWindowTitle("Musicodibou");
 
-    this->setMinimumSize(750, 550);
-    this->setMaximumSize(750, 550);
+    this->setMinimumSize(790, 550);
+    this->setMaximumSize(790, 550);
 
 //    QPalette *palette = new QPalette();
 //    palette->setColor(QPalette::Base, QColor(Qt::green));
@@ -112,6 +112,9 @@ Widget::Widget(QWidget *parent) :
     connect(ui->si_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->si_2, 14);
 
+    connect(ui->do_3, SIGNAL(clicked()), mapper, SLOT(map()));
+    mapper->setMapping(ui->do_3, 15);
+
     connect(mapper, SIGNAL(mapped(int)), this, SLOT(handleButton(int)));
 
 
@@ -173,6 +176,9 @@ void Widget::handleButton(int note) {
         case 14: {
             //QSound::play("../musique/son/o.wav");
             QSound::play("../musique/son/sim.wav");
+            break;}
+        case 15: {
+            QSound::play("../musique/son/do3.wav");
             break;}
 
     }
