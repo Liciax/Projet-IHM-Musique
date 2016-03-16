@@ -10,14 +10,14 @@ void monReaderAMoi::retrievElements(QDomElement root, QString tag, QString att) 
     listeNotes.clear();
     QDomNodeList nodes = root.elementsByTagName(tag);
 
-    qDebug() << "# nodes = " << nodes.count();
+    //qDebug() << "# nodes = " << nodes.count();
     for(int i = 0; i < nodes.count(); i++)
     {
         QDomNode elm = nodes.at(i);
         if(elm.isElement())
         {
             QDomElement e = elm.toElement();
-            qDebug() << e.attribute(att);
+            //qDebug() << e.attribute(att);
             listeNotes.append(e.attribute(att).toInt());
         }
     }
@@ -53,7 +53,7 @@ int monReaderAMoi::lireFichier(QString s) {
     // retrievelements(QDomElement root, QString tag, QString att)
     retrievElements(root, "Note", "Code");
 
-    qDebug() << "Reading finished";
+    //qDebug() << "Reading finished";
     return 0;
 }
 QList<int> monReaderAMoi::getListeNotes() const
