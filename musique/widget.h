@@ -15,6 +15,7 @@
 #include <QPaintEvent>
 #include <QSvgWidget>
 #include <QSound>
+#include <QVector>
 #include <QString>
 #include <QSignalMapper>
 #include "partition.h"
@@ -45,6 +46,7 @@ private:
     QVBoxLayout *layoutPrincipal;
     QGridLayout *layoutChoix;
     QGridLayout *layoutPiano;
+    QGridLayout *layoutNoteAffiche;
 
     QComboBox *boxPartition;
 
@@ -56,6 +58,8 @@ private:
     QWidget *widgetPartition;
 
     QSvgWidget *svg;
+    QVector<QString> vectorNote;
+
 };
 
 #endif // WIDGET_H

@@ -7,7 +7,6 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-//    instru = Piano;
 
     ui->setupUi(this);
 
@@ -17,8 +16,6 @@ Widget::Widget(QWidget *parent) :
     this->setMinimumSize(790, 550);
     this->setMaximumSize(790, 550);
 
-//    QPalette *palette = new QPalette();
-//    palette->setColor(QPalette::Base, QColor(Qt::green));
 
     //Création des labels
     labelPartition = new QLabel(" <b> Choisir une partition :</b>");
@@ -47,6 +44,7 @@ Widget::Widget(QWidget *parent) :
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
 
+    layoutNoteAffiche = new QGridLayout;
     //Création de la partition
     widgetPartition = new QWidget();
     part = new Partition(widgetPartition);
@@ -55,14 +53,12 @@ Widget::Widget(QWidget *parent) :
     svg->move(0,8);  //Deplacer l'image
     svg->renderer();
 
-//    QPalette p( widgetPartition->palette() );
-//    p.setColor( QPalette::Base, Qt::cyan );
-//   widgetPartition->setPalette( p );
 
     //Création du layout principale
     layoutPrincipal = new QVBoxLayout;
     layoutPrincipal->addLayout(layoutChoix);
     layoutPrincipal->addWidget(widgetPartition);
+    layoutPrincipal->addLayout(layoutNoteAffiche);
     layoutPrincipal->addLayout(layoutPiano);
 
     this->setLayout(layoutPrincipal);
@@ -116,36 +112,28 @@ void Widget::handleButton(int note) {
     switch(note) {
         case 1: {
             QSound::play("../musique/son/doM.wav");
-            break;
-        }
+            break;}
         case 2: {
             QSound::play("../musique/son/reM.wav");
-            break;
-        }
+            break;}
         case 3: {
             QSound::play("../musique/son/miM.wav");
-            break;
-        }
+            break;}
         case 4: {
             QSound::play("../musique/son/faM.wav");
-            break;
-        }
+            break;}
         case 5: {
             QSound::play("../musique/son/solM.wav");
-            break;
-        }
+            break;}
         case 6: {
             QSound::play("../musique/son/laM.wav");
-            break;
-        }
+            break;}
         case 7: {
             QSound::play("../musique/son/siM.wav");
-            break;
-        }
+            break;}
         case 8: {
             QSound::play("../musique/son/dom.wav");
-            break;
-        }
+            break;}
         case 9: {
             QSound::play("../musique/son/rem.wav");
             break;}
@@ -162,21 +150,14 @@ void Widget::handleButton(int note) {
             QSound::play("../musique/son/lam.wav");
             break;}
         case 14: {
-            QSound::play("../musique/son/o.wav");
-            //QSound::play("../musique/son/sim.wav");
+            //QSound::play("../musique/son/o.wav");
+            QSound::play("../musique/son/sim.wav");
             break;}
         case 15: {
             QSound::play("../musique/son/do3.wav");
             break;}
-
     }
-
 }
-
-
-//void Widget::playSound() {
-//   QSound::play("/comptes/E127854X/M1_Alma/IHM/Projet-IHM-Musique/musique/ff-040.wav");
-//}
 
 
 void Widget::partChanged()
