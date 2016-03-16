@@ -18,7 +18,7 @@ void monReaderAMoi::retrievElements(QDomElement root, QString tag, QString att) 
         {
             QDomElement e = elm.toElement();
             qDebug() << e.attribute(att);
-            listeNotes.prepend(e.attribute(att).toInt());
+            listeNotes.append(e.attribute(att).toInt());
         }
     }
 }
