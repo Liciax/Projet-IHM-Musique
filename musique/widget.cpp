@@ -158,12 +158,9 @@ void Widget::handleButton(int note) {
             QSound::play("../musique/son/do3.wav");
             break;}
     }
-<<<<<<< HEAD
-=======
+
     part->setAvancement(part->getAvancement()+1);
 
-
->>>>>>> f5257a1ecd6e1bddbd1172bc93a4e09759fe0384
 }
 
 
