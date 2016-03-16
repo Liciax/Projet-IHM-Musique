@@ -21,6 +21,10 @@ public :
      QSize minimumSizeHint() const;
      QSize sizeHint() const;
      void loadPartition(QString s);
+     void drawAvancement(int avancement);
+
+     int getAvancement() const;
+     void setAvancement(int value);
 
 public slots:
      void setPart(Part part);
@@ -28,6 +32,7 @@ public slots:
 private:
      Part part;
      monReaderAMoi *liseur;
+     int avancement;
 
 };
 

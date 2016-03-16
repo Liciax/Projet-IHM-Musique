@@ -102,6 +102,7 @@ Widget::Widget(QWidget *parent) :
     connect(boxPartition, SIGNAL(activated(int)),
             this, SLOT(partChanged()));
 
+
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
 
 //    instrumentChange();
@@ -157,6 +158,12 @@ void Widget::handleButton(int note) {
             QSound::play("../musique/son/do3.wav");
             break;}
     }
+<<<<<<< HEAD
+=======
+    part->setAvancement(part->getAvancement()+1);
+
+
+>>>>>>> f5257a1ecd6e1bddbd1172bc93a4e09759fe0384
 }
 
 

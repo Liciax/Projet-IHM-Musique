@@ -59,6 +59,7 @@ private:
 
     QSvgWidget *svg;
     QVector<QString> vectorNote;
+    int avancement;
 
 };
 

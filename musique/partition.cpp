@@ -8,6 +8,7 @@ Partition::Partition(QWidget *parent)
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
     liseur = new monReaderAMoi();
+    avancement = 0;
 }
 
 QSize Partition::minimumSizeHint() const
@@ -25,6 +26,17 @@ void Partition::setPart(Part part)
     this->part = part;
     update();
 }
+int Partition::getAvancement() const
+{
+    return avancement;
+}
+
+void Partition::setAvancement(int value)
+{
+    avancement = value;
+    update();
+}
+
 
 void Partition::loadPartition(QString s) {
     liseur->lireFichier(s);
@@ -40,8 +52,8 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
         loadPartition("Partition2");
         break;
     }
+    QPainter painter(this);
 
-  QPainter painter(this);
   painter.setPen(Qt::black);
 
   painter.drawLine(10,50, 750, 50);
@@ -64,11 +76,11 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
                 painter.drawLine((80*i)-10,((liseur->getListeNotes().at(i-1)*(-7.4))+118.4) +14, (80*i)+25, ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)+14);
                 break;
 
-            case 3:
+            case 13:
                 painter.drawLine((80*i)-10,((liseur->getListeNotes().at(i-1)*(-7.4))+118.4) +14, (80*i)+25, ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)+14);
                 break;
 
-            case 5:
+            case 15:
                 painter.drawLine((80*i)-10,((liseur->getListeNotes().at(i-1)*(-7.4))+118.4) +14, (80*i)+25, ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)+14);
                 break;
       }
@@ -76,6 +88,18 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
       painter.drawEllipse(QRectF(80*i, (5.8 + ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)) , 15, 15));//x, y , width, height
       painter.drawRect( (80*i)+14 ,104.4+(-7.7*liseur->getListeNotes().at(i-1)) ,1 ,30);
 
-  }
+    }
+
+    if(avancement > 0) {
+        QPen pn;
+        pn.setWidth(2);
+        pn.setColor(QColor(0,0,255,255));
+        painter.setPen(pn);
+        painter.drawLine((80*avancement)+8 , 10 , (80*avancement)+8 , 160 );
+        if(avancement==8) {
+            avancement=0;
+        }
+    }
+
 }
 
