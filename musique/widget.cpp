@@ -187,6 +187,7 @@ void Widget::partChanged()
     Partition::Part parti = Partition::Part(boxPartition->itemData(
                                                     boxPartition->currentIndex(), IdRole).toInt());
     part->setPart(parti);
+
 }
 
 Widget::~Widget()
