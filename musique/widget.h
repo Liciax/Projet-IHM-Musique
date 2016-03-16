@@ -56,6 +56,7 @@ private:
     QWidget *widgetPartition;
 
     QSvgWidget *svg;
+    int avancement;
 };
 
 #endif // WIDGET_H

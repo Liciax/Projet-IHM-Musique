@@ -106,6 +106,7 @@ Widget::Widget(QWidget *parent) :
     connect(boxPartition, SIGNAL(activated(int)),
             this, SLOT(partChanged()));
 
+
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
 
 //    instrumentChange();
@@ -170,6 +171,8 @@ void Widget::handleButton(int note) {
             break;}
 
     }
+    part->setAvancement(part->getAvancement()+1);
+
 
 }
 
