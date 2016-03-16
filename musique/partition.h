@@ -1,6 +1,7 @@
 #ifndef PARTITION_H
 #define PARTITION_H
 
+#include <iostream>
 #include <QWidget>
 #include <QColor>
 #include <QPainter>
