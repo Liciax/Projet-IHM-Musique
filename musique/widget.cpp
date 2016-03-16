@@ -21,7 +21,8 @@ Widget::Widget(QWidget *parent) :
 //    palette->setColor(QPalette::Base, QColor(Qt::green));
 
     //Création des labels
-    labelPartition = new QLabel("<b>Choisir une partition : </b>");
+    labelPartition = new QLabel(" <b> Choisir une partition :</b>");
+    labelPartition->setStyleSheet("background-color: rgb(255, 255, 255)");
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
@@ -38,7 +39,7 @@ Widget::Widget(QWidget *parent) :
     //Création du layout des sélection/choix
     layoutChoix = new QGridLayout;
 
-    layoutChoix->addWidget(labelPartition, 0, 0, 1, 2);
+    layoutChoix->addWidget(labelPartition, 0, 0);
     layoutChoix->addWidget(boxPartition, 0, 1, 1, 2);
     layoutChoix->addWidget(b_retour, 1, 1);
     layoutChoix->addWidget(b_valider, 1, 2);
