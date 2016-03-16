@@ -171,8 +171,8 @@ void Widget::handleButton(int note) {
             QSound::play("../musique/son/lam.wav");
             break;}
         case 14: {
-            //QSound::play("../musique/son/o.wav");
-            QSound::play("../musique/son/sim.wav");
+            QSound::play("../musique/son/o.wav");
+            //QSound::play("../musique/son/sim.wav");
             break;}
 
     }
