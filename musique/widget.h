@@ -13,7 +13,7 @@
 #include <QBrush>
 #include <QRectF>
 #include <QPaintEvent>
-//#include <QSvgWidget>
+#include <QSvgWidget>
 #include <QSound>
 #include <QString>
 #include <QSignalMapper>
@@ -54,7 +54,7 @@ private:
 
     QWidget *widgetPartition;
 
-    //QSvgWidget *svg;
+    QSvgWidget *svg;
 };
 
 #endif // WIDGET_H

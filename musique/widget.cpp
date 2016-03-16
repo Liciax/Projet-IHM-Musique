@@ -50,10 +50,10 @@ Widget::Widget(QWidget *parent) :
     //Création de la partition
     widgetPartition = new QWidget();
     part = new Partition(widgetPartition);
-    /*svg = new QSvgWidget(":clef_sol.svg", widgetPartition);
-    svg->resize(60,120); // Retailler l'image
-    svg->move(5,4);  //Deplacer l'image
-    svg->renderer();*/
+    svg = new QSvgWidget(":clef_sol.svg", widgetPartition);
+    svg->resize(60,140); // Retailler l'image
+    svg->move(0,8);  //Deplacer l'image
+    svg->renderer();
 
 //    QPalette p( widgetPartition->palette() );
 //    p.setColor( QPalette::Base, Qt::cyan );
