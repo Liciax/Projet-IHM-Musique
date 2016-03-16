@@ -7,6 +7,7 @@ monReaderAMoi::monReaderAMoi()
 
 
 void monReaderAMoi::retrievElements(QDomElement root, QString tag, QString att) {
+    listeNotes.clear();
     QDomNodeList nodes = root.elementsByTagName(tag);
 
     qDebug() << "# nodes = " << nodes.count();
@@ -54,4 +55,13 @@ int monReaderAMoi::lireFichier(QString s) {
 
     qDebug() << "Reading finished";
     return 0;
+}
+QList<int> monReaderAMoi::getListeNotes() const
+{
+    return listeNotes;
+}
+
+void monReaderAMoi::setListeNotes(const QList<int> &value)
+{
+    listeNotes = value;
 }
