@@ -55,19 +55,26 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
   // essaie des note des musique
   //x1, y1, x2, y2
 
-//  for(i = 1; i <= liseur->getListeNotes().size(); i++) {
-  for(i = liseur->getListeNotes().size(); i >= 1; i--) {
-//      switch(liseur->getListeNotes().at(i-1)) {
-//            case 1:
+    for(i = 1; i <= liseur->getListeNotes().size(); i++) {
+//  for(i = liseur->getListeNotes().size(); i >= 1; i--) {
 
-//            case 3
-//      }
+      switch(liseur->getListeNotes().at(i-1)) {
 
+            case 1:
+                painter.drawLine((80*i)-10,((liseur->getListeNotes().at(i-1)*(-7.4))+118.4) +14, (80*i)+25, ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)+14);
+                break;
 
-      qDebug() << i  << " et "<< liseur->getListeNotes().at(i-1)  << " et "<< 13.2 + (liseur->getListeNotes().at(i-1)*7.4);
+            case 3:
+                painter.drawLine((80*i)-10,((liseur->getListeNotes().at(i-1)*(-7.4))+118.4) +14, (80*i)+25, ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)+14);
+                break;
 
-      painter.drawEllipse(QRectF(40*i, (5.8 + (liseur->getListeNotes().at(i-1)*7.4)) , 15, 15));//x, y , width, height
-      painter.drawRect( (40*i)+14 ,-14+(7.7*liseur->getListeNotes().at(i-1)) ,1 ,30);
+            case 5:
+                painter.drawLine((80*i)-10,((liseur->getListeNotes().at(i-1)*(-7.4))+118.4) +14, (80*i)+25, ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)+14);
+                break;
+      }
+
+      painter.drawEllipse(QRectF(80*i, (5.8 + ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)) , 15, 15));//x, y , width, height
+      painter.drawRect( (80*i)+14 ,104.4+(-7.7*liseur->getListeNotes().at(i-1)) ,1 ,30);
 
   }
 }
