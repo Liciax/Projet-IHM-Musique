@@ -34,6 +34,7 @@ public:
 
 public slots:
     void handleButton(int note);
+    void partChanged();
 
 private:
 

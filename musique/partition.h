@@ -14,13 +14,19 @@ class Partition : public QWidget
 
 public :
 
+    enum Part {Partition1, Partition2};
+
      Partition(QWidget *parent = 0);
      void paintEvent(QPaintEvent *event);
      QSize minimumSizeHint() const;
      QSize sizeHint() const;
      void loadPartition(QString s);
 
+public slots:
+     void setPart(Part part);
+
 private:
+     Part part;
      monReaderAMoi *liseur;
 
 };

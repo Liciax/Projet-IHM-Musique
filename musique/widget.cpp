@@ -26,8 +26,8 @@ Widget::Widget(QWidget *parent) :
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
-    boxPartition->addItem("Partition 1");
-    boxPartition->addItem("Partition 2");
+    boxPartition->addItem("Partition 1", Partition::Partition1);
+    boxPartition->addItem("Partition 2", Partition::Partition2);
 
     //PushBoutton valider et retour
     b_valider = new QPushButton("Valider", this);
@@ -72,51 +72,39 @@ Widget::Widget(QWidget *parent) :
 
     connect(ui->do_1, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->do_1, 1);
-
     connect(ui->re_1, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->re_1, 2);
-
     connect(ui->mi_1, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->mi_1, 3);
-
     connect(ui->fa_1, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->fa_1, 4);
-
     connect(ui->sol_1, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->sol_1, 5);
-
     connect(ui->la_1, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->la_1, 6);
-
     connect(ui->si_1, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->si_1, 7);
-
     connect(ui->do_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->do_2, 8);
-
     connect(ui->re_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->re_2, 9);
-
     connect(ui->mi_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->mi_2, 10);
-
     connect(ui->fa_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->fa_2, 11);
-
     connect(ui->sol_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->sol_2, 12);
-
     connect(ui->la_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->la_2, 13);
-
     connect(ui->si_2, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->si_2, 14);
-
     connect(ui->do_3, SIGNAL(clicked()), mapper, SLOT(map()));
     mapper->setMapping(ui->do_3, 15);
 
     connect(mapper, SIGNAL(mapped(int)), this, SLOT(handleButton(int)));
 
+    connect(boxPartition, SIGNAL(activated(int)),
+            this, SLOT(partChanged()));
 
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
 
@@ -191,11 +179,12 @@ void Widget::handleButton(int note) {
 //}
 
 
-//void Widget::instrumentChange() {
-//    instru = Instrument(boxIntrument->itemData(
-//                            boxIntrument->currentIndex(), IdRole).toInt());
-//    this->setInstrument(instru);
-//}
+void Widget::partChanged()
+{
+    Partition::Part parti = Partition::Part(boxPartition->itemData(
+                                                    boxPartition->currentIndex(), IdRole).toInt());
+    part->setPart(parti);
+}
 
 Widget::~Widget()
 {

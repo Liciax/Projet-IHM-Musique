@@ -3,6 +3,8 @@
 Partition::Partition(QWidget *parent)
     : QWidget(parent)
 {
+    part = Partition1;
+
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
     liseur = new monReaderAMoi();
@@ -18,13 +20,27 @@ QSize Partition::sizeHint() const
     return QSize(800, 180);
 }
 
+void Partition::setPart(Part part)
+{
+    this->part = part;
+    update();
+}
+
 void Partition::loadPartition(QString s) {
     liseur->lireFichier(s);
 }
 
-void Partition::paintEvent(QPaintEvent *event) {
+void Partition::paintEvent(QPaintEvent * /* event */) {
     int i;
+    switch(part) {
+    case Partition1:
         loadPartition("Partition1");
+        break;
+    case Partition2:
+        loadPartition("Partition2");
+        break;
+    }
+
   QPainter painter(this);
   painter.setPen(Qt::black);
 
