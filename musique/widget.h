@@ -39,6 +39,7 @@ public slots:
     void handleButton(int note);
     void partChanged();
     void setAfficheNote(bool note);
+    void reset();
 
 private:
 
@@ -55,8 +56,7 @@ private:
     QCheckBox *boxAfficheNote;
     QLabel *labelPartition;
 
-    QPushButton *b_valider;
-    QPushButton *b_retour;
+    QPushButton *b_restart;
 
     QWidget *widgetPartition;
 

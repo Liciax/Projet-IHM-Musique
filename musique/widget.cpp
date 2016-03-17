@@ -186,8 +186,9 @@ void Widget::handleButton(int note) {
 
 }
 
-void Wigdet::reset() {
+void Widget::reset() {
     part->setAvancement(1);
+    vectorNote.clear();
 }
 
 
