@@ -168,7 +168,6 @@ void Widget::handleButton(int note) {
     vectorNote.push_back(note);
     if(vectorNote.size() ==  8 ) {
         part->setResults(vectorNote);
-        qDebug("marche?");
 
         QMessageBox::information(
             this,

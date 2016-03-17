@@ -41,14 +41,34 @@ QList<QColor> Partition::getResults() const
 void Partition::setResults(const QList<int> &value)
 {
     int i;
+    int reussi = 0;
     for(i = 0; i < 8; i++)
     {
         if(value.at(i) == listeNote.at(i)){
+            reussi=reussi+1;
             results[i] = (QColor(50,205,50,255));
         } else {
             results[i] = (QColor(Qt::red));
         }
+
     }
+    QFile file("logs.txt");
+    if(!file.open(QIODevice::Append | QIODevice::Text))
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+            return;
+        QDateTime now = QDateTime::currentDateTime();
+        QTextStream out(&file);
+        QString s;
+        switch(part) {
+        case Partition1:
+            s=("Partition1");
+            break;
+        case Partition2:
+            s=("Partition2");
+            break;
+        }
+        i = (reussi*100)/8;
+        out << "[" << now.toString("ddd d MMM yyyy, hh:mm") << "], partition: " << s << " , taut de reussite: " << i<< "%\n";
     update();
 
 }
