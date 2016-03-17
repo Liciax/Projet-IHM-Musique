@@ -48,7 +48,6 @@ void Partition::setResults(const QList<int> &value)
         } else {
             results[i] = (QColor(Qt::red));
         }
-        qDebug() << "lol : " << results.at(i).name();
     }
     update();
 
