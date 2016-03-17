@@ -41,7 +41,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Mi</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -66,7 +66,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Sol</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -91,7 +91,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Si</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -116,7 +116,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Re</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -144,7 +144,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Do</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -169,7 +169,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>La</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -194,7 +194,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Fa</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -219,7 +219,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Fa</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -244,7 +244,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Si</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -269,7 +269,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>La</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -294,7 +294,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Re</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -322,7 +322,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Do</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -347,7 +347,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Mi</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -372,7 +372,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Sol</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -617,7 +617,7 @@
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Do</string>
+     <string/>
     </property>
     <property name="flat">
      <bool>false</bool>

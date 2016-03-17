@@ -6,6 +6,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QComboBox>
+#include <QCheckBox>
 #include <QPushButton>
 #include <QPalette>
 #include <QColor>
@@ -37,6 +38,7 @@ public:
 public slots:
     void handleButton(int note);
     void partChanged();
+    void setAfficheNote(bool note);
 
 private:
 
@@ -50,7 +52,7 @@ private:
     QGridLayout *layoutNoteAffiche;
 
     QComboBox *boxPartition;
-
+    QCheckBox *boxAfficheNote;
     QLabel *labelPartition;
 
     QPushButton *b_valider;
@@ -61,6 +63,7 @@ private:
     QSvgWidget *svg;
     QVector<int> vectorNote;
     int avancement;
+    bool note;
 
 };
 

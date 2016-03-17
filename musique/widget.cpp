@@ -23,28 +23,32 @@ Widget::Widget(QWidget *parent) :
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
-    boxPartition->addItem("La musique du bonheur", Partition::Partition1);
-    boxPartition->addItem("Partition 2", Partition::Partition2);
+    boxPartition->addItem("La mélodie du parrain", Partition::Partition1);
+    boxPartition->addItem("The world is molli", Partition::Partition2);
+
+    boxAfficheNote = new QCheckBox("Afficher les notes sur le piano");
+    boxAfficheNote->setFocusPolicy(Qt::NoFocus);
 
     //PushBoutton valider et retour
-    b_valider = new QPushButton("Valider", this);
+    b_valider = new QPushButton("Recommencer", this);
     b_valider->setCursor(Qt::PointingHandCursor);
 
-    b_retour = new QPushButton("Retour", this);
-    b_retour->setCursor(Qt::PointingHandCursor);
+//    b_retour = new QPushButton("Retour", this);
+//    b_retour->setCursor(Qt::PointingHandCursor);
 
     //Création du layout des sélection/choix
     layoutChoix = new QGridLayout;
 
     layoutChoix->addWidget(labelPartition, 0, 0);
     layoutChoix->addWidget(boxPartition, 0, 1, 1, 2);
-    layoutChoix->addWidget(b_retour, 1, 1);
+    //layoutChoix->addWidget(b_retour, 1, 1);
     layoutChoix->addWidget(b_valider, 1, 2);
 
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
 
     layoutNoteAffiche = new QGridLayout;
+
     //Création de la partition
     widgetPartition = new QWidget();
     part = new Partition(widgetPartition);
@@ -59,6 +63,7 @@ Widget::Widget(QWidget *parent) :
     layoutPrincipal->addLayout(layoutChoix);
     layoutPrincipal->addWidget(widgetPartition);
     layoutPrincipal->addLayout(layoutNoteAffiche);
+    layoutPrincipal->addWidget(boxAfficheNote);
     layoutPrincipal->addLayout(layoutPiano);
 
     this->setLayout(layoutPrincipal);
@@ -101,13 +106,11 @@ Widget::Widget(QWidget *parent) :
 
     connect(boxPartition, SIGNAL(activated(int)),
             this, SLOT(partChanged()));
-
-
-
+    connect(boxAfficheNote, SIGNAL(toggled(bool)),
+            this, SLOT(setAfficheNote(bool)));
 
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
-
-//    instrumentChange();
+    boxAfficheNote->setChecked(false);
 
 }
 
@@ -165,11 +168,9 @@ void Widget::handleButton(int note) {
         part->setResults(vectorNote);
 
 
-
-
         QMessageBox::information(
             this,
-            tr("Application Name"),
+            tr("Résultat de votre performance"),
             tr("An information message.") );
         vectorNote.clear();
         //fin de la partition, affich et log
@@ -187,6 +188,46 @@ void Widget::partChanged()
     part->setPart(parti);
     vectorNote.clear();
 
+}
+
+void Widget::setAfficheNote(bool note)
+{
+    this->note = note;
+    if(this->note) {
+        ui->do_1->setText("Do");
+        ui->re_1->setText("Ré");
+        ui->mi_1->setText("Mi");
+        ui->fa_1->setText("Fa");
+        ui->sol_1->setText("Sol");
+        ui->la_1->setText("La");
+        ui->si_1->setText("Si");
+        ui->do_2->setText("Do");
+        ui->re_2->setText("Ré");
+        ui->mi_2->setText("Mi");
+        ui->fa_2->setText("Fa");
+        ui->sol_2->setText("Sol");
+        ui->la_2->setText("La");
+        ui->si_2->setText("Si");
+        ui->do_3->setText("Do");
+
+    } else {
+        ui->do_1->setText("");
+        ui->re_1->setText("");
+        ui->mi_1->setText("");
+        ui->fa_1->setText("");
+        ui->sol_1->setText("");
+        ui->la_1->setText("");
+        ui->si_1->setText("");
+        ui->do_2->setText("");
+        ui->re_2->setText("");
+        ui->mi_2->setText("");
+        ui->fa_2->setText("");
+        ui->sol_2->setText("");
+        ui->la_2->setText("");
+        ui->si_2->setText("");
+        ui->do_3->setText("");
+    }
+    update();
 }
 
 Widget::~Widget()
