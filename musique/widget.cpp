@@ -23,7 +23,7 @@ Widget::Widget(QWidget *parent) :
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
-    boxPartition->addItem("Partition 1", Partition::Partition1);
+    boxPartition->addItem("La musique du bonheur", Partition::Partition1);
     boxPartition->addItem("Partition 2", Partition::Partition2);
 
     //PushBoutton valider et retour
