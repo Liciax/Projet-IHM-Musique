@@ -166,13 +166,15 @@ void Widget::handleButton(int note) {
     vectorNote.push_back(note);
     if(vectorNote.size() ==  8 ) {
         part->setResults(vectorNote);
-
+        qDebug("marche?");
 
         QMessageBox::information(
             this,
             tr("Résultat de votre performance"),
             tr("An information message.") );
+
         vectorNote.clear();
+
         //fin de la partition, affich et log
     }
     part->setAvancement(part->getAvancement()+1);
