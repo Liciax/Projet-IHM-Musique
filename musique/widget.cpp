@@ -103,6 +103,8 @@ Widget::Widget(QWidget *parent) :
             this, SLOT(partChanged()));
 
 
+
+
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
 
 //    instrumentChange();
@@ -158,7 +160,22 @@ void Widget::handleButton(int note) {
             QSound::play("../musique/son/do3.wav");
             break;}
     }
+    vectorNote.push_back(note);
+    if(vectorNote.size() ==  8 ) {
+        part->setResults(vectorNote);
+
+
+
+
+        QMessageBox::information(
+            this,
+            tr("Application Name"),
+            tr("An information message.") );
+        vectorNote.clear();
+        //fin de la partition, affich et log
+    }
     part->setAvancement(part->getAvancement()+1);
+
 
 }
 
@@ -168,6 +185,7 @@ void Widget::partChanged()
     Partition::Part parti = Partition::Part(boxPartition->itemData(
                                                     boxPartition->currentIndex(), IdRole).toInt());
     part->setPart(parti);
+    vectorNote.clear();
 
 }
 

@@ -27,6 +27,22 @@ void Partition::setPart(Part part)
     this->avancement = 1;
     update();
 }
+
+QVector<QColor> Partition::getResults() const
+{
+    return results;
+}
+
+void Partition::setResults(const QVector<int> &value)
+{
+    int i = 0;
+    for(i = 0; i < 8; i++)
+    {
+//        if(value.at(i) == )
+    }
+
+}
+
 int Partition::getAvancement() const
 {
     return avancement;
