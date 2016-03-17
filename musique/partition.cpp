@@ -68,7 +68,7 @@ void Partition::setResults(const QList<int> &value)
             break;
         }
         i = (reussi*100)/8;
-        out << "[" << now.toString("ddd d MMM yyyy, hh:mm") << "], partition: " << s << " , taut de reussite: " << i<< "%\n";
+        out << "[" << now.toString("le ddd d MMM yyyy, hh:mm") << "], partition: " << s << " , votre taut de reussite: " << i<< "%\n";
     update();
 
 }
