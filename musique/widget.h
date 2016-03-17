@@ -15,7 +15,7 @@
 #include <QPaintEvent>
 #include <QSvgWidget>
 #include <QSound>
-#include <QVector>
+#include <QList>
 #include <QString>
 #include <QSignalMapper>
 #include <QMessageBox>
@@ -59,7 +59,7 @@ private:
     QWidget *widgetPartition;
 
     QSvgWidget *svg;
-    QVector<int> vectorNote;
+    QList<int> vectorNote;
     int avancement;
 
 };

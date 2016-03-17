@@ -163,7 +163,7 @@ void Widget::handleButton(int note) {
     vectorNote.push_back(note);
     if(vectorNote.size() ==  8 ) {
         part->setResults(vectorNote);
-
+        qDebug("marche?");
 
 
 
@@ -171,7 +171,9 @@ void Widget::handleButton(int note) {
             this,
             tr("Application Name"),
             tr("An information message.") );
+
         vectorNote.clear();
+
         //fin de la partition, affich et log
     }
     part->setAvancement(part->getAvancement()+1);

@@ -4,11 +4,16 @@ Partition::Partition(QWidget *parent)
     : QWidget(parent)
 {
     part = Partition1;
+    int i;
 
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
     liseur = new monReaderAMoi();
     avancement = 1;
+    for(i = 0; i < 8; i++)
+    {
+        results.push_back(QColor(0,0,0,255));
+    }
 }
 
 QSize Partition::minimumSizeHint() const
@@ -28,18 +33,24 @@ void Partition::setPart(Part part)
     update();
 }
 
-QVector<QColor> Partition::getResults() const
+QList<QColor> Partition::getResults() const
 {
     return results;
 }
 
-void Partition::setResults(const QVector<int> &value)
+void Partition::setResults(const QList<int> &value)
 {
-    int i = 0;
+    int i;
     for(i = 0; i < 8; i++)
     {
-//        if(value.at(i) == )
+        if(value.at(i) == listeNote.at(i)){
+            results[i] = (QColor(50,205,50,255));
+        } else {
+            results[i] = (QColor(Qt::red));
+        }
+        qDebug() << "lol : " << results.at(i).name();
     }
+    update();
 
 }
 
@@ -84,11 +95,10 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
 
   painter.setBrush(Qt::SolidPattern);
 
-  // essaie des note des musique
-  //x1, y1, x2, y2
 
+  //x1, y1, x2, y2
+    listeNote = liseur->getListeNotes();
     for(i = 1; i <= liseur->getListeNotes().size(); i++) {
-//  for(i = liseur->getListeNotes().size(); i >= 1; i--) {
 
       switch(liseur->getListeNotes().at(i-1)) {
 
@@ -105,6 +115,8 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
                 break;
       }
 
+      pn.setColor(results.at(i-1));
+      painter.setPen(pn);
       painter.drawEllipse(QRectF(80*i, (5.8 + ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)) , 15, 15));//x, y , width, height
       painter.drawRect( (80*i)+14 ,104.4+(-7.7*liseur->getListeNotes().at(i-1)) ,1 ,30);
 

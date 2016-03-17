@@ -26,17 +26,18 @@ public :
      int getAvancement() const;
      void setAvancement(int value);
 
-     QVector<QColor> getResults() const;
-     void setResults(const QVector<int> &value);
+     QList<QColor> getResults() const;
+     void setResults(const QList<int> &value);
 
 public slots:
      void setPart(Part part);
 
 private:
      Part part;
+     QList<int> listeNote;
      monReaderAMoi *liseur;
      int avancement;
-     QVector<QColor> results;
+     QList<QColor> results;
 
 };
 
