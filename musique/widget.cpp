@@ -7,14 +7,14 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
-
+    k = 0;
     ui->setupUi(this);
 
     this->setWindowIcon(QPixmap(":icone.png"));
     this->setWindowTitle("Musicodibou");
 
-    this->setMinimumSize(790, 550);
-    this->setMaximumSize(790, 550);
+    this->setMinimumSize(790, 650);
+    this->setMaximumSize(790, 650);
 
 
     //Création des labels
@@ -47,7 +47,18 @@ Widget::Widget(QWidget *parent) :
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
 
-    layoutNoteAffiche = new QGridLayout;
+    texte = QString("Vos notes : ");
+
+    widgetNoteTape = new QTextEdit(texte);
+    widgetNoteTape->setMinimumSize(QSize(768,60));
+    widgetNoteTape->setMaximumSize(QSize(768,60));
+
+//    resultatTape = new QLabel(texte, widgetNoteTape );
+//    resultatTape->move(120,150);
+//    resultatTape->setText("toto");
+
+//    layoutNoteTape = new QGridLayout;
+//    layoutNoteTape->addWidget(widgetNoteTape,0,0);
 
     //Création de la partition
     widgetPartition = new QWidget();
@@ -62,7 +73,9 @@ Widget::Widget(QWidget *parent) :
     layoutPrincipal = new QVBoxLayout;
     layoutPrincipal->addLayout(layoutChoix);
     layoutPrincipal->addWidget(widgetPartition);
-    layoutPrincipal->addLayout(layoutNoteAffiche);
+    //layoutPrincipal->addLayout(layoutNoteTape);
+    layoutPrincipal->addWidget(widgetNoteTape);
+    widgetNoteTape->setStyleSheet("background-color: rgb(255, 255, 255)");
     layoutPrincipal->addWidget(boxAfficheNote);
     layoutPrincipal->addLayout(layoutPiano);
 
@@ -118,55 +131,94 @@ void Widget::handleButton(int note) {
     switch(note) {
         case 1: {
             QSound::play("../musique/son/doM.wav");
+            //QLabel * label_do = new QLabel("Do", widgetNoteTape);
+            texte = texte + " Do";
+
             break;}
         case 2: {
             QSound::play("../musique/son/reM.wav");
+            //QLabel * label_re = new QLabel("Ré", widgetNoteTape);
+            texte = texte + " Ré";
             break;}
         case 3: {
             QSound::play("../musique/son/miM.wav");
+            //QLabel * label_mi = new QLabel("Mi", widgetNoteTape);
+            texte = texte + " Mi";
             break;}
         case 4: {
             QSound::play("../musique/son/faM.wav");
+            //QLabel * label_fa = new QLabel("Fa", widgetNoteTape);
+            texte = texte + " Fa";
             break;}
         case 5: {
             QSound::play("../musique/son/solM.wav");
+            //QLabel * label_sol = new QLabel("Sol",widgetNoteTape);
+            texte = texte + " Sol";
             break;}
         case 6: {
             QSound::play("../musique/son/laM.wav");
+            //QLabel * label_la = new QLabel("La",widgetNoteTape);
+            texte = texte + " La";
             break;}
         case 7: {
             QSound::play("../musique/son/siM.wav");
+            //QLabel * label_si = new QLabel("Si",widgetNoteTape);
+            texte = texte + " Si";
             break;}
         case 8: {
             QSound::play("../musique/son/dom.wav");
+            //QLabel * label_do2 = new QLabel("Do",widgetNoteTape);
+            texte = texte + " Do";
             break;}
         case 9: {
             QSound::play("../musique/son/rem.wav");
+            //QLabel * label_re2 = new QLabel("Ré",widgetNoteTape);
+            texte = texte + " Ré";
             break;}
         case 10: {
             QSound::play("../musique/son/mim.wav");
+            //QLabel * label_mi2 = new QLabel("Mi",widgetNoteTape);
+            texte = texte + " Mi";
             break;}
         case 11: {
             QSound::play("../musique/son/fam.wav");
+            //QLabel * label_fa2 = new QLabel("Fa",widgetNoteTape);
+            texte = texte + " Fa";
             break;}
         case 12: {
             QSound::play("../musique/son/solm.wav");
+            //QLabel * label_sol2 = new QLabel("Sol",widgetNoteTape);
+            texte = texte + " Sol";
             break;}
         case 13: {
             QSound::play("../musique/son/lam.wav");
+            //QLabel * label_la2 = new QLabel("La",widgetNoteTape);
+            texte = texte + " La";
             break;}
         case 14: {
             //QSound::play("../musique/son/o.wav");
             QSound::play("../musique/son/sim.wav");
+            //QLabel * label_si2 = new QLabel("Si",widgetNoteTape);
+            texte = texte + " Si";
             break;}
         case 15: {
             QSound::play("../musique/son/do3.wav");
+            //QLabel * label_do3 = new QLabel("Do",widgetNoteTape);
+            texte = texte + " Do";
             break;}
     }
+
+
+//    layoutNoteTape->addWidget(widgetNoteTape, 0, k);
+//    k++;
+//    texte.replace(0,texte.size(), temp);
+    widgetNoteTape->setPlainText(texte);
+
+//    qDebug() << "a:" << resultatTape->text();
+
     vectorNote.push_back(note);
     if(vectorNote.size() ==  8 ) {
         part->setResults(vectorNote);
-        qDebug("marche?");
 
         QMessageBox::information(
             this,

@@ -17,6 +17,7 @@
 #include <QSvgWidget>
 #include <QSound>
 #include <QList>
+#include <QTextEdit>
 #include <QString>
 #include <QSignalMapper>
 #include <QMessageBox>
@@ -49,7 +50,7 @@ private:
     QVBoxLayout *layoutPrincipal;
     QGridLayout *layoutChoix;
     QGridLayout *layoutPiano;
-    QGridLayout *layoutNoteAffiche;
+    //QGridLayout *layoutNoteTape;
 
     QComboBox *boxPartition;
     QCheckBox *boxAfficheNote;
@@ -59,11 +60,16 @@ private:
     QPushButton *b_retour;
 
     QWidget *widgetPartition;
+    QTextEdit *widgetNoteTape;
+//    QLabel *resultatTape;
+
+    QString texte;
 
     QSvgWidget *svg;
     QList<int> vectorNote;
     int avancement;
     bool note;
+    int k;
 
 };
 
