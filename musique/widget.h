@@ -51,7 +51,6 @@ private:
     QVBoxLayout *layoutPrincipal;
     QGridLayout *layoutChoix;
     QGridLayout *layoutPiano;
-    //QGridLayout *layoutNoteTape;
 
     QComboBox *boxPartition;
     QCheckBox *boxAfficheNote;
@@ -61,7 +60,6 @@ private:
 
     QWidget *widgetPartition;
     QTextEdit *widgetNoteTape;
-//    QLabel *resultatTape;
 
     QString texte;
 
@@ -69,7 +67,6 @@ private:
     QList<int> vectorNote;
     int avancement;
     bool note;
-    int k;
 
 };
 
