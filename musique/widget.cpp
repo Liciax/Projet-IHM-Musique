@@ -30,8 +30,8 @@ Widget::Widget(QWidget *parent) :
     boxAfficheNote->setFocusPolicy(Qt::NoFocus);
 
     //PushBoutton valider et retour
-    b_valider = new QPushButton("Recommencer", this);
-    b_valider->setCursor(Qt::PointingHandCursor);
+    b_restart = new QPushButton("Recommencer", this);
+    b_restart->setCursor(Qt::PointingHandCursor);
 
 //    b_retour = new QPushButton("Retour", this);
 //    b_retour->setCursor(Qt::PointingHandCursor);
@@ -42,7 +42,7 @@ Widget::Widget(QWidget *parent) :
     layoutChoix->addWidget(labelPartition, 0, 0);
     layoutChoix->addWidget(boxPartition, 0, 1, 1, 2);
     //layoutChoix->addWidget(b_retour, 1, 1);
-    layoutChoix->addWidget(b_valider, 1, 2);
+    layoutChoix->addWidget(b_restart, 1, 2);
 
     layoutPiano = new QGridLayout;
     layoutPiano->addWidget(ui->widget, 0, 1);
@@ -121,6 +121,8 @@ Widget::Widget(QWidget *parent) :
             this, SLOT(partChanged()));
     connect(boxAfficheNote, SIGNAL(toggled(bool)),
             this, SLOT(setAfficheNote(bool)));
+
+    connect(b_restart, SIGNAL(clicked()), this, SLOT(reset()));
 
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
     boxAfficheNote->setChecked(false);
@@ -225,6 +227,8 @@ void Widget::handleButton(int note) {
             tr("Résultat de votre performance"),
             tr("An information message.") );
 
+        part->resetColors();
+
         vectorNote.clear();
 
         //fin de la partition, affich et log
@@ -232,6 +236,11 @@ void Widget::handleButton(int note) {
     part->setAvancement(part->getAvancement()+1);
 
 
+}
+
+void Widget::reset() {
+    part->setAvancement(1);
+    vectorNote.clear();
 }
 
 

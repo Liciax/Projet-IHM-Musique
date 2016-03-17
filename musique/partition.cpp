@@ -41,15 +41,34 @@ QList<QColor> Partition::getResults() const
 void Partition::setResults(const QList<int> &value)
 {
     int i;
+    int reussi = 0;
     for(i = 0; i < 8; i++)
     {
         if(value.at(i) == listeNote.at(i)){
+            reussi=reussi+1;
             results[i] = (QColor(50,205,50,255));
         } else {
             results[i] = (QColor(Qt::red));
         }
-        qDebug() << "lol : " << results.at(i).name();
+
     }
+    QFile file("logs.txt");
+    if(!file.open(QIODevice::Append | QIODevice::Text))
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+            return;
+        QDateTime now = QDateTime::currentDateTime();
+        QTextStream out(&file);
+        QString s;
+        switch(part) {
+        case Partition1:
+            s=("Partition1");
+            break;
+        case Partition2:
+            s=("Partition2");
+            break;
+        }
+        i = (reussi*100)/8;
+        out << "[" << now.toString("ddd d MMM yyyy, hh:mm") << "], partition: " << s << " , taut de reussite: " << i<< "%\n";
     update();
 
 }
@@ -62,6 +81,15 @@ int Partition::getAvancement() const
 void Partition::setAvancement(int value)
 {
     avancement = value;
+    update();
+}
+
+void Partition::resetColors() {
+    int i;
+    for(i = 0; i < 8; i++)
+    {
+        results[i] = QColor(0,0,0,255);
+    }
     update();
 }
 
@@ -93,7 +121,10 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
   painter.drawLine(10,95, 750, 95);
   painter.drawLine(10,110, 750, 110);
 
-  painter.setBrush(Qt::SolidPattern);
+  QBrush brush;
+  brush.setColor(Qt::black);
+  brush.setStyle(Qt::SolidPattern);
+  painter.setBrush(brush);
 
 
   //x1, y1, x2, y2
@@ -117,6 +148,10 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
 
       pn.setColor(results.at(i-1));
       painter.setPen(pn);
+
+      brush.setColor(results.at(i-1));
+      painter.setBrush(brush);
+
       painter.drawEllipse(QRectF(80*i, (5.8 + ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)) , 15, 15));//x, y , width, height
       painter.drawRect( (80*i)+14 ,104.4+(-7.7*liseur->getListeNotes().at(i-1)) ,1 ,30);
 
