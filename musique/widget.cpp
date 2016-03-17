@@ -243,7 +243,7 @@ void Widget::handleButton(int note) {
             this,
             tr("Résultat de votre performance"),
             tr("Vous trouverez vos resultats journaliers dans le fichier logs.txt"),
-                    QMessageBox::Ok,QMessageBox::Ok );
+                    QMessageBox::Ok);
 
         part->resetColors();
 
