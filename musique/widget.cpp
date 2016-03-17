@@ -13,7 +13,7 @@ Widget::Widget(QWidget *parent) :
     this->setWindowTitle("Musicodibou");
 
     this->setMinimumSize(790, 650);
-    this->setMaximumSize(790, 650);
+    this->setMaximumSize(790, 550);
 
 
     //Création des labels
@@ -31,22 +31,26 @@ Widget::Widget(QWidget *parent) :
     //PushBoutton valider et retour
     b_restart = new QPushButton("Recommencer", this);
     b_restart->setCursor(Qt::PointingHandCursor);
+    b_restart->setIcon(QPixmap(":restart.png"));
 
     //Création du layout des sélection/choix
     layoutChoix = new QGridLayout;
 
     layoutChoix->addWidget(labelPartition, 0, 0);
     layoutChoix->addWidget(boxPartition, 0, 1, 1, 2);
-    layoutChoix->addWidget(b_restart, 1, 2);
+    //layoutChoix->addWidget(b_restart, 1, 2);
 
     layoutPiano = new QGridLayout;
-    layoutPiano->addWidget(ui->widget, 0, 1);
+    layoutPiano->addWidget(boxAfficheNote, 0 ,1, 1, 2);
+    layoutPiano->addWidget(b_restart, 0, 3, 1 ,1);
+    layoutPiano->addWidget(ui->widget, 1, 1, 1, 3);
 
     texte = QString("Vos notes : ");
 
     widgetNoteTape = new QTextEdit(texte);
     widgetNoteTape->setMinimumSize(QSize(768,60));
     widgetNoteTape->setMaximumSize(QSize(768,60));
+    widgetNoteTape->setReadOnly(true);
 
     //Création de la partition
     widgetPartition = new QWidget();
@@ -64,7 +68,7 @@ Widget::Widget(QWidget *parent) :
     //layoutPrincipal->addLayout(layoutNoteTape);
     layoutPrincipal->addWidget(widgetNoteTape);
     widgetNoteTape->setStyleSheet("background-color: rgb(255, 255, 255)");
-    layoutPrincipal->addWidget(boxAfficheNote);
+    //layoutPrincipal->addWidget(boxAfficheNote);
     layoutPrincipal->addLayout(layoutPiano);
 
     this->setLayout(layoutPrincipal);
@@ -205,13 +209,15 @@ void Widget::handleButton(int note) {
     if(vectorNote.size() ==  8 ) {
         part->setResults(vectorNote);
 
-        texte = "Vos notes : ";
-        widgetNoteTape->setPlainText("Vos notes : ");
+
         QMessageBox::information(
             this,
             tr("Résultat de votre performance"),
             tr("Vous trouverez vos resultats journaliers dans le fichier logs.txt"),
                     QMessageBox::Ok);
+
+        texte = "Vos notes : ";
+        widgetNoteTape->setPlainText("Vos notes : ");
 
         part->resetColors();
         vectorNote.clear();

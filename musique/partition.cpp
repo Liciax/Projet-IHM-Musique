@@ -18,12 +18,12 @@ Partition::Partition(QWidget *parent)
 
 QSize Partition::minimumSizeHint() const
 {
-    return QSize(200, 180);
+    return QSize(200, 220);
 }
 
 QSize Partition::sizeHint() const
 {
-    return QSize(800, 180);
+    return QSize(800, 220);
 }
 
 void Partition::setPart(Part part)
@@ -114,6 +114,7 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
     pn.setWidth(2);
     pn.setColor(QColor(0,0,0,255));
     painter.setPen(pn);
+    painter.setRenderHint(QPainter::Antialiasing);
 
   painter.drawLine(10,50, 750, 50);
   painter.drawLine(10,65, 750, 65);
