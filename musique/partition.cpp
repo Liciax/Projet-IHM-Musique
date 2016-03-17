@@ -65,6 +65,15 @@ void Partition::setAvancement(int value)
     update();
 }
 
+void Partition::resetColors() {
+    int i;
+    for(i = 0; i < 8; i++)
+    {
+        results[i] = QColor(0,0,0,255);
+    }
+    update();
+}
+
 
 void Partition::loadPartition(QString s) {
     liseur->lireFichier(s);
@@ -93,7 +102,10 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
   painter.drawLine(10,95, 750, 95);
   painter.drawLine(10,110, 750, 110);
 
-  painter.setBrush(Qt::SolidPattern);
+  QBrush brush;
+  brush.setColor(Qt::black);
+  brush.setStyle(Qt::SolidPattern);
+  painter.setBrush(brush);
 
 
   //x1, y1, x2, y2
@@ -117,6 +129,10 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
 
       pn.setColor(results.at(i-1));
       painter.setPen(pn);
+
+      brush.setColor(results.at(i-1));
+      painter.setBrush(brush);
+
       painter.drawEllipse(QRectF(80*i, (5.8 + ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)) , 15, 15));//x, y , width, height
       painter.drawRect( (80*i)+14 ,104.4+(-7.7*liseur->getListeNotes().at(i-1)) ,1 ,30);
 

@@ -28,6 +28,7 @@ public :
 
      QList<QColor> getResults() const;
      void setResults(const QList<int> &value);
+     void resetColors();
 
 public slots:
      void setPart(Part part);
