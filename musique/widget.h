@@ -18,6 +18,7 @@
 #include <QVector>
 #include <QString>
 #include <QSignalMapper>
+#include <QMessageBox>
 #include "partition.h"
 
 namespace Ui {
@@ -58,7 +59,7 @@ private:
     QWidget *widgetPartition;
 
     QSvgWidget *svg;
-    QVector<QString> vectorNote;
+    QVector<int> vectorNote;
     int avancement;
 
 };

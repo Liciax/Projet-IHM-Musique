@@ -8,7 +8,7 @@ Partition::Partition(QWidget *parent)
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
     liseur = new monReaderAMoi();
-    avancement = 0;
+    avancement = 1;
 }
 
 QSize Partition::minimumSizeHint() const
@@ -24,8 +24,25 @@ QSize Partition::sizeHint() const
 void Partition::setPart(Part part)
 {
     this->part = part;
+    this->avancement = 1;
     update();
 }
+
+QVector<QColor> Partition::getResults() const
+{
+    return results;
+}
+
+void Partition::setResults(const QVector<int> &value)
+{
+    int i = 0;
+    for(i = 0; i < 8; i++)
+    {
+//        if(value.at(i) == )
+    }
+
+}
+
 int Partition::getAvancement() const
 {
     return avancement;
@@ -54,7 +71,10 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
     }
     QPainter painter(this);
 
-  painter.setPen(Qt::black);
+    QPen pn;
+    pn.setWidth(2);
+    pn.setColor(QColor(0,0,0,255));
+    painter.setPen(pn);
 
   painter.drawLine(10,50, 750, 50);
   painter.drawLine(10,65, 750, 65);
@@ -90,16 +110,14 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
 
     }
 
-    if(avancement > 0) {
-        QPen pn;
-        pn.setWidth(2);
+    //if(avancement > 1) {
         pn.setColor(QColor(0,0,255,255));
         painter.setPen(pn);
         painter.drawLine((80*avancement)+8 , 10 , (80*avancement)+8 , 160 );
         if(avancement==8) {
             avancement=0;
         }
-    }
+    //}
 
 }
 
