@@ -87,6 +87,7 @@ Widget::Widget(QWidget *parent) :
     //mapper de note et son
     mapper = new QSignalMapper(this);
 
+
     connect(ui->do_1, SIGNAL(clicked()), mapper, SLOT(map()));
     ui->do_1->setShortcut(tr("&"));
     mapper->setMapping(ui->do_1, 1);
@@ -124,13 +125,13 @@ Widget::Widget(QWidget *parent) :
     ui->sol_2->setShortcut(tr("="));
     mapper->setMapping(ui->sol_2, 12);
     connect(ui->la_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    ui->la_2->setShortcut(tr("$"));
+    ui->la_2->setShortcut(tr("7"));
     mapper->setMapping(ui->la_2, 13);
     connect(ui->si_2, SIGNAL(clicked()), mapper, SLOT(map()));
-    ui->si_2->setShortcut(tr("*"));
+    ui->si_2->setShortcut(tr("8"));
     mapper->setMapping(ui->si_2, 14);
     connect(ui->do_3, SIGNAL(clicked()), mapper, SLOT(map()));
-    ui->do_3->setShortcut(tr("!"));
+    ui->do_3->setShortcut(tr("9"));
     mapper->setMapping(ui->do_3, 15);
 
     connect(mapper, SIGNAL(mapped(int)), this, SLOT(handleButton(int)));
@@ -246,49 +247,49 @@ void Widget::add_note_entree(int note) {
 
     switch(note) {
         case 1: {
-            texte = texte + " Do";
+            texte = texte + "  Dom";
             break;}
         case 2: {
-            texte = texte + " Ré";
+            texte = texte + "  Rém";
             break;}
         case 3: {
-            texte = texte + " Mi";
+            texte = texte + "  Mim";
             break;}
         case 4: {
-            texte = texte + " Fa";
+            texte = texte + "  Fam";
             break;}
         case 5: {
-            texte = texte + " Sol";
+            texte = texte + " Solm";
             break;}
         case 6: {
-            texte = texte + " La";
+            texte = texte + "  Lam";
             break;}
         case 7: {
-            texte = texte + " Si";
+            texte = texte + "  Sim";
             break;}
         case 8: {
-            texte = texte + " Do";
+            texte = texte + "  DoM";
             break;}
         case 9: {
-            texte = texte + " Ré";
+            texte = texte + "  RéM";
             break;}
         case 10: {
-            texte = texte + " Mi";
+            texte = texte + "  MiM";
             break;}
         case 11: {
-            texte = texte + " Fa";
+            texte = texte + "  FaM";
             break;}
         case 12: {
-            texte = texte + " Sol";
+            texte = texte + " SolM";
             break;}
         case 13: {
-            texte = texte + " La";
+            texte = texte + "  LaM";
             break;}
         case 14: {
-            texte = texte + " Si";
+            texte = texte + "  SiM";
             break;}
         case 15: {
-            texte = texte + " Do";
+            texte = texte + " DoMM";
             break;}
     }
     widgetNoteTape->setPlainText(texte);
@@ -311,7 +312,12 @@ void Widget::reset() {
 
 void Widget::retour_en_arriere() {
     if(vectorNote.size() > 0 ) {
-        part->setAvancement(part->getAvancement()-1);
+        qDebug() <<"a "  << part->getAvancement();
+        if(part->getAvancement() == 0) {
+            part->setAvancement(7);
+        } else {
+            part->setAvancement(part->getAvancement()-1);
+        }
         vectorNote.pop_back();
         texte = "Notes rentrées : ";
         widgetNoteTape->setPlainText("Notes rentrées : ");
@@ -369,6 +375,20 @@ void Widget::setAfficheNote(bool note)
         ui->si_2->setText("");
         ui->do_3->setText("");
     }
+    ui->do_1->setShortcut(tr("&"));
+    ui->re_1->setShortcut(tr("é"));
+    ui->mi_1->setShortcut(tr("\""));
+    ui->fa_1->setShortcut(tr("'"));
+    ui->sol_1->setShortcut(tr("("));
+    ui->la_1->setShortcut(tr("-"));
+    ui->si_1->setShortcut(tr("è"));
+    ui->do_2->setShortcut(tr("_"));
+    ui->re_2->setShortcut(tr("ç"));
+    ui->mi_2->setShortcut(tr("à"));
+    ui->fa_2->setShortcut(tr(")"));
+    ui->la_2->setShortcut(tr("7"));
+    ui->si_2->setShortcut(tr("8"));
+    ui->do_3->setShortcut(tr("9"));
     update();
 }
 
