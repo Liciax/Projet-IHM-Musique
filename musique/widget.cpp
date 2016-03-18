@@ -245,7 +245,7 @@ void Widget::handleButton(int note) {
             message->setWindowTitle(tr("Résultat de votre performance"));
             message->show();
 
-            message->move( this->width() / 2, this->height() / 2 );
+            message->move( this->width() / 4, this->height() /2.1 );
             message->exec();
         //FIN NOUVEAU POPUP
 
