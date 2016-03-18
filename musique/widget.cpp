@@ -243,8 +243,9 @@ void Widget::handleButton(int note) {
             message->setText(calcule_resultat());
             message->addButton( QMessageBox::Ok );
             message->setWindowTitle(tr("Résultat de votre performance"));
-            message->move( win->width() / 2 - message->width() / 2, win->height() / 2 - message->height() / 2 );
             message->show();
+
+            message->move( this->width() / 2, this->height() / 2 );
             message->exec();
         //FIN NOUVEAU POPUP
 
