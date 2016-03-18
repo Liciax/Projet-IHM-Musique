@@ -17,8 +17,9 @@ Widget::Widget(QWidget *parent) :
 
 
     //Création des labels
-    labelPartition = new QLabel(" <b> Choisir une partition :</b>");
+    labelPartition = new QLabel(" Choisir une partition : ");
     labelPartition->setStyleSheet("background-color: rgb(255, 255, 255)");
+    labelPartition->setFont(QFont( "Ubuntu", 11, QFont::Bold));
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
@@ -55,6 +56,9 @@ Widget::Widget(QWidget *parent) :
     //font = new QFont();
     //font.setPixelSize(24);
     //widgetNoteTape->setFont(font);
+    QFont f( "Ubuntu", 14, QFont::Bold);
+    widgetNoteTape->setFont(f);
+
     widgetNoteTape->setMinimumSize(QSize(768,60));
     widgetNoteTape->setMaximumSize(QSize(768,60));
     widgetNoteTape->setReadOnly(true);
