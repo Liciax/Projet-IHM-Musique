@@ -62,7 +62,7 @@ void Partition::setResults(const QList<int> &value)
         }
 
     }
-    QFile file("logs.txt");
+    QFile file("resultats.txt");
     if(!file.open(QIODevice::Append | QIODevice::Text))
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
             return;
@@ -176,6 +176,86 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
             avancement=0;
         }
     //}
+
+}
+
+void Partition::writelog(int bouton) {
+    QString boutonTapee;
+    switch(bouton) {
+        case 1: {
+            boutonTapee = "  Do1";
+            break;}
+        case 2: {
+            boutonTapee = "  Ré1";
+            break;}
+        case 3: {
+            boutonTapee = "  Mi1";
+            break;}
+        case 4: {
+            boutonTapee = "  Fa1";
+            break;}
+        case 5: {
+            boutonTapee = " Sol1";
+            break;}
+        case 6: {
+            boutonTapee = "  La1";
+            break;}
+        case 7: {
+            boutonTapee = "  Si1";
+            break;}
+        case 8: {
+            boutonTapee = "  DoM";
+            break;}
+        case 9: {
+            boutonTapee = "  RéM";
+            break;}
+        case 10: {
+            boutonTapee = "  MiM";
+            break;}
+        case 11: {
+            boutonTapee = "  FaM";
+            break;}
+        case 12: {
+            boutonTapee = " SolM";
+            break;}
+        case 13: {
+            boutonTapee = "  LaM";
+            break;}
+        case 14: {
+            boutonTapee = "  SiM";
+            break;}
+        case 15: {
+            boutonTapee = " DoMM";
+            break;}
+        case 100: {
+            boutonTapee = " retour";
+            break;}
+        case 101: {
+            boutonTapee = " recommencer";
+            break;}
+        case 102: {
+            boutonTapee = " cachenotes";
+            break;}
+        case 103: {
+            boutonTapee = " changepart";
+            break;}
+    }
+    QDateTime dayoflog = QDateTime::currentDateTime();
+    QFile file(dayoflog.toString("logddMMyy") + ".txt");
+        if(!file.open(QIODevice::Append | QIODevice::Text))
+            if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+                return;
+            QTextStream out(&file);
+            QString s;
+            switch(part) {
+            case Partition1:
+                s=("Partition1");
+                break;
+            case Partition2:
+                s=("Partition2");
+                break;
+            }
+            out << dayoflog.toString("[hh:mm:ss:zzz]") << ", partition: " << s << ", touche: " << boutonTapee << "\n";
 
 }
 

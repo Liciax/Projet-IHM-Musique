@@ -215,7 +215,7 @@ void Widget::handleButton(int note) {
             break;}
     }
     add_note_entree(note);
-
+    part->writelog(note);
 
 
     widgetNoteTape->setPlainText(texte);
@@ -244,6 +244,7 @@ void Widget::handleButton(int note) {
     part->setAvancement(part->getAvancement()+1);
 }
 
+
 /*
  *
  *
@@ -270,7 +271,7 @@ void Widget::handleButton(int note) {
  *
  *
  *
- * /
+ */
 
 void Widget::add_note_entree(int note) {
 
@@ -297,28 +298,28 @@ void Widget::add_note_entree(int note) {
             texte = texte + "  Si1";
             break;}
         case 8: {
-            texte = texte + "  DoM";
+            texte = texte + "  Do2";
             break;}
         case 9: {
-            texte = texte + "  RéM";
+            texte = texte + "  Ré2";
             break;}
         case 10: {
-            texte = texte + "  MiM";
+            texte = texte + "  Mi2";
             break;}
         case 11: {
-            texte = texte + "  FaM";
+            texte = texte + "  Fa2";
             break;}
         case 12: {
-            texte = texte + " SolM";
+            texte = texte + " Sol2";
             break;}
         case 13: {
-            texte = texte + "  LaM";
+            texte = texte + "  La2";
             break;}
         case 14: {
-            texte = texte + "  SiM";
+            texte = texte + "  Si2";
             break;}
         case 15: {
-            texte = texte + " DoMM";
+            texte = texte + " Do3";
             break;}
     }
     widgetNoteTape->setPlainText(texte);
@@ -337,6 +338,8 @@ void Widget::reset() {
     texte = "Notes rentrées : ";
     widgetNoteTape->setPlainText("Notes rentrées : ");
     vectorNote.clear();
+
+    part->writelog(101);
 }
 
 void Widget::retour_en_arriere() {
@@ -353,6 +356,8 @@ void Widget::retour_en_arriere() {
         set_aff_notes(vectorNote);
     }
 
+    part->writelog(100);
+
 }
 
 
@@ -364,11 +369,14 @@ void Widget::partChanged()
     widgetNoteTape->setPlainText("Notes rentrées : ");
     part->setPart(parti);
     vectorNote.clear();
+    part->writelog(103);
 
 }
 
 void Widget::setAfficheNote(bool note)
 {
+
+    part->writelog(102);
     this->note = note;
     if(this->note) {
         ui->do_1->setText("Do");

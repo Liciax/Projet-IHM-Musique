@@ -33,6 +33,9 @@ public :
      QList<int> getListeNote() const;
      void setListeNote(const QList<int> &value);
 
+     void writelog(int note);
+
+
 public slots:
      void setPart(Part part);
 
