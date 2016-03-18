@@ -230,10 +230,25 @@ void Widget::handleButton(int note) {
         texte = texte + "\nNotes attendues :";
         set_aff_notes(part->getListeNote());
 
-        QMessageBox::information(
-            this,
-            tr("Résultat de votre performance"),calcule_resultat(),
-                    QMessageBox::Ok);
+
+        //ANCIEN POPUP A NE PAS VIRER
+
+//        QMessageBox::information(
+//            this,
+//            tr("Résultat de votre performance"),calcule_resultat(),
+//                    QMessageBox::Ok);
+
+        //NOUVEAU POPUP MARCHE?
+            QMessageBox *message = new QMessageBox(this);
+            message->setText(calcule_resultat());
+            message->addButton( QMessageBox::Ok );
+            message->setWindowTitle(tr("Résultat de votre performance"));
+            message->move( win->width() / 2 - message->width() / 2, win->height() / 2 - message->height() / 2 );
+            message->show();
+            message->exec();
+        //FIN NOUVEAU POPUP
+
+
 
         texte = "Notes rentrées : ";
         widgetNoteTape->setPlainText("Notes rentrées : ");
