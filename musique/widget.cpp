@@ -144,7 +144,7 @@ Widget::Widget(QWidget *parent) :
     connect(b_restart, SIGNAL(clicked()), this, SLOT(reset()));
     b_restart->setShortcut(tr("r"));
     connect(b_back1, SIGNAL(clicked()), this, SLOT(retour_en_arriere()));
-    b_back1->setShortcut(tr("t"));
+    b_back1->setShortcut(Qt::Key_Backspace);
 
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
     boxAfficheNote->setChecked(false);
