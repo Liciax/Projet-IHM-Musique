@@ -35,12 +35,17 @@ public:
 
     explicit Widget(QWidget *parent = 0);
     ~Widget();
+    QString calcule_resultat();
 
 public slots:
     void handleButton(int note);
     void partChanged();
     void setAfficheNote(bool note);
     void reset();
+    void retour_en_arriere();
+
+    void add_note_entree(int note);
+    void set_aff_notes(QList<int> liste);
 
 private:
 
@@ -57,11 +62,13 @@ private:
     QLabel *labelPartition;
 
     QPushButton *b_restart;
+    QPushButton *b_back1;
 
     QWidget *widgetPartition;
     QTextEdit *widgetNoteTape;
 
     QString texte;
+    QFont font;
 
     QSvgWidget *svg;
     QList<int> vectorNote;

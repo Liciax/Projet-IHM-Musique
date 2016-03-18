@@ -33,6 +33,9 @@ Widget::Widget(QWidget *parent) :
     b_restart->setCursor(Qt::PointingHandCursor);
     b_restart->setIcon(QPixmap(":restart.png"));
 
+    b_back1 = new QPushButton("Revenir en arriere", this);
+    b_back1->setCursor(Qt::PointingHandCursor);
+
     //Création du layout des sélection/choix
     layoutChoix = new QGridLayout;
 
@@ -41,13 +44,17 @@ Widget::Widget(QWidget *parent) :
     //layoutChoix->addWidget(b_restart, 1, 2);
 
     layoutPiano = new QGridLayout;
-    layoutPiano->addWidget(boxAfficheNote, 0 ,1, 1, 2);
+    layoutPiano->addWidget(boxAfficheNote, 0 ,1, 1, 1);
     layoutPiano->addWidget(b_restart, 0, 3, 1 ,1);
+    layoutPiano->addWidget(b_back1, 0, 2, 1 ,1);
     layoutPiano->addWidget(ui->widget, 1, 1, 1, 3);
 
-    texte = QString("Vos notes : ");
+    texte = QString("Notes rentrées : ");
 
     widgetNoteTape = new QTextEdit(texte);
+    //font = new QFont();
+    //font.setPixelSize(24);
+    //widgetNoteTape->setFont(font);
     widgetNoteTape->setMinimumSize(QSize(768,60));
     widgetNoteTape->setMaximumSize(QSize(768,60));
     widgetNoteTape->setReadOnly(true);
@@ -131,77 +138,79 @@ Widget::Widget(QWidget *parent) :
 
     connect(b_restart, SIGNAL(clicked()), this, SLOT(reset()));
     b_restart->setShortcut(tr("r"));
+    connect(b_back1, SIGNAL(clicked()), this, SLOT(retour_en_arriere()));
+    b_back1->setShortcut(tr("t"));
 
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
     boxAfficheNote->setChecked(false);
 
 }
 
+QString Widget::calcule_resultat() {
+    int i;
+    int reussi = 0;
+    for(i = 0; i < 8; i++)
+    {
+        if(vectorNote.at(i) == part->getListeNote().at(i)){
+            reussi=reussi+1;
+        }
+
+    }
+    QString s;
+    s = s + "vous avez " + QString::number(reussi) + " bonnes reponses sur " + QString::number(part->getListeNote().size()) + " (les bonnes reponses sont en <span style=' color:#32CD32;'>vert</span>, les mauvaises en <span style=' color:#ff0000;'>rouge</span>).\n Vous retrouverez vos scores dans le fichier logs.txt.";
+    return s;
+}
+
 void Widget::handleButton(int note) {
     switch(note) {
         case 1: {
             QSound::play("../musique/son/doM.wav");
-            texte = texte + " Do";
-
             break;}
         case 2: {
             QSound::play("../musique/son/reM.wav");
-            texte = texte + " Ré";
             break;}
         case 3: {
             QSound::play("../musique/son/miM.wav");
-            texte = texte + " Mi";
             break;}
         case 4: {
             QSound::play("../musique/son/faM.wav");
-            texte = texte + " Fa";
             break;}
         case 5: {
             QSound::play("../musique/son/solM.wav");
-            texte = texte + " Sol";
             break;}
         case 6: {
             QSound::play("../musique/son/laM.wav");
-            texte = texte + " La";
             break;}
         case 7: {
             QSound::play("../musique/son/siM.wav");
-            texte = texte + " Si";
             break;}
         case 8: {
             QSound::play("../musique/son/dom.wav");
-            texte = texte + " Do";
             break;}
         case 9: {
             QSound::play("../musique/son/rem.wav");
-            texte = texte + " Ré";
             break;}
         case 10: {
             QSound::play("../musique/son/mim.wav");
-            texte = texte + " Mi";
             break;}
         case 11: {
             QSound::play("../musique/son/fam.wav");
-            texte = texte + " Fa";
             break;}
         case 12: {
             QSound::play("../musique/son/solm.wav");
-            texte = texte + " Sol";
             break;}
         case 13: {
             QSound::play("../musique/son/lam.wav");
-            texte = texte + " La";
             break;}
         case 14: {
-            //QSound::play("../musique/son/o.wav");
             QSound::play("../musique/son/sim.wav");
-            texte = texte + " Si";
             break;}
         case 15: {
             QSound::play("../musique/son/do3.wav");
-            texte = texte + " Do";
             break;}
     }
+
+    add_note_entree(note);
 
     widgetNoteTape->setPlainText(texte);
 
@@ -209,15 +218,19 @@ void Widget::handleButton(int note) {
     if(vectorNote.size() ==  8 ) {
         part->setResults(vectorNote);
 
+        texte = "Notes rentrées : ";
+        widgetNoteTape->setPlainText("Notes rentrées : ");
+        set_aff_notes(vectorNote);
+        texte = texte + "\nNotes attendues :";
+        set_aff_notes(part->getListeNote());
 
         QMessageBox::information(
             this,
-            tr("Résultat de votre performance"),
-            tr("Vous trouverez vos resultats journaliers dans le fichier logs.txt"),
+            tr("Résultat de votre performance"),calcule_resultat(),
                     QMessageBox::Ok);
 
-        texte = "Vos notes : ";
-        widgetNoteTape->setPlainText("Vos notes : ");
+        texte = "Notes rentrées : ";
+        widgetNoteTape->setPlainText("Notes rentrées : ");
 
         part->resetColors();
         vectorNote.clear();
@@ -225,11 +238,82 @@ void Widget::handleButton(int note) {
     part->setAvancement(part->getAvancement()+1);
 }
 
+void Widget::add_note_entree(int note) {
+
+    switch(note) {
+        case 1: {
+            texte = texte + " Do";
+            break;}
+        case 2: {
+            texte = texte + " Ré";
+            break;}
+        case 3: {
+            texte = texte + " Mi";
+            break;}
+        case 4: {
+            texte = texte + " Fa";
+            break;}
+        case 5: {
+            texte = texte + " Sol";
+            break;}
+        case 6: {
+            texte = texte + " La";
+            break;}
+        case 7: {
+            texte = texte + " Si";
+            break;}
+        case 8: {
+            texte = texte + " Do";
+            break;}
+        case 9: {
+            texte = texte + " Ré";
+            break;}
+        case 10: {
+            texte = texte + " Mi";
+            break;}
+        case 11: {
+            texte = texte + " Fa";
+            break;}
+        case 12: {
+            texte = texte + " Sol";
+            break;}
+        case 13: {
+            texte = texte + " La";
+            break;}
+        case 14: {
+            texte = texte + " Si";
+            break;}
+        case 15: {
+            texte = texte + " Do";
+            break;}
+    }
+    widgetNoteTape->setPlainText(texte);
+
+}
+
+void Widget::set_aff_notes(QList<int> liste) {
+    int i;
+    for(i = 0; i<liste.size(); i++) {
+        add_note_entree(liste.at(i));
+    }
+}
+
 void Widget::reset() {
     part->setAvancement(1);
-    texte = "Vos notes : ";
-    widgetNoteTape->setPlainText("Vos notes : ");
+    texte = "Notes rentrées : ";
+    widgetNoteTape->setPlainText("Notes rentrées : ");
     vectorNote.clear();
+}
+
+void Widget::retour_en_arriere() {
+    if(vectorNote.size() > 0 ) {
+        part->setAvancement(part->getAvancement()-1);
+        vectorNote.pop_back();
+        texte = "Notes rentrées : ";
+        widgetNoteTape->setPlainText("Notes rentrées : ");
+        set_aff_notes(vectorNote);
+    }
+
 }
 
 
@@ -237,8 +321,8 @@ void Widget::partChanged()
 {
     Partition::Part parti = Partition::Part(boxPartition->itemData(
                                                     boxPartition->currentIndex(), IdRole).toInt());
-    texte = "Vos notes : ";
-    widgetNoteTape->setPlainText("Vos notes : ");
+    texte = "Notes rentrées : ";
+    widgetNoteTape->setPlainText("Notes rentrées : ");
     part->setPart(parti);
     vectorNote.clear();
 

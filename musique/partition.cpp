@@ -32,6 +32,16 @@ void Partition::setPart(Part part)
     this->avancement = 1;
     update();
 }
+QList<int> Partition::getListeNote() const
+{
+    return listeNote;
+}
+
+void Partition::setListeNote(const QList<int> &value)
+{
+    listeNote = value;
+}
+
 
 QList<QColor> Partition::getResults() const
 {

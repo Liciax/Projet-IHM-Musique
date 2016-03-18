@@ -30,6 +30,9 @@ public :
      void setResults(const QList<int> &value);
      void resetColors();
 
+     QList<int> getListeNote() const;
+     void setListeNote(const QList<int> &value);
+
 public slots:
      void setPart(Part part);
 
