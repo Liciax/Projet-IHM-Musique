@@ -210,8 +210,9 @@ void Widget::handleButton(int note) {
             QSound::play("../musique/son/do3.wav");
             break;}
     }
-
     add_note_entree(note);
+
+
 
     widgetNoteTape->setPlainText(texte);
 
@@ -239,29 +240,57 @@ void Widget::handleButton(int note) {
     part->setAvancement(part->getAvancement()+1);
 }
 
+/*
+ *
+ *
+ *     QFile file("hiddenlogs.txt");
+    if(!file.open(QIODevice::Append | QIODevice::Text))
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+            return;
+        QDateTime now = QDateTime::currentDateTime();
+        QTextStream out(&file);
+        QString s;
+        switch(part) {
+        case Partition1:
+            s=("Partition1");
+            break;
+        case Partition2:
+            s=("Partition2");
+            break;
+        }
+        i = (reussi*100)/8;
+        out << "[" << now.toString("[hh:mm:ss:zzz") << "], partition: " << s << ", touche: " << note;
+ *
+ *
+ *
+ *
+ *
+ *
+ * /
+
 void Widget::add_note_entree(int note) {
 
     switch(note) {
         case 1: {
-            texte = texte + "  Dom";
+            texte = texte + "  Do1";
             break;}
         case 2: {
-            texte = texte + "  Rém";
+            texte = texte + "  Ré1";
             break;}
         case 3: {
-            texte = texte + "  Mim";
+            texte = texte + "  Mi1";
             break;}
         case 4: {
-            texte = texte + "  Fam";
+            texte = texte + "  Fa1";
             break;}
         case 5: {
-            texte = texte + " Solm";
+            texte = texte + " Sol1";
             break;}
         case 6: {
-            texte = texte + "  Lam";
+            texte = texte + "  La1";
             break;}
         case 7: {
-            texte = texte + "  Sim";
+            texte = texte + "  Si1";
             break;}
         case 8: {
             texte = texte + "  DoM";
