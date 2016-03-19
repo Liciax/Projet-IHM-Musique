@@ -183,7 +183,7 @@ QString Widget::calcule_resultat() {
 
     }
     QString s;
-    s = s + "vous avez <b>" + QString::number(reussi) + "</b> bonnes reponses sur <b>" + QString::number(part->getListeNote().size()) + "</b> (les bonnes reponses sont en <span style=' color:#32CD32;'>vert</span>, les mauvaises en <span style=' color:#ff0000;'>rouge</span>).\n Vous retrouverez vos scores dans le fichier logs.txt.";
+    s = s + "Vous avez <b>" + QString::number(reussi) + "</b> bonnes reponses sur <b>" + QString::number(part->getListeNote().size()) + "</b> (les bonnes reponses sont en <span style=' color:#32CD32;'>vert</span>, les mauvaises en <span style=' color:#ff0000;'>rouge</span>).</br> Vous retrouverez vos scores dans le fichier \"logs.txt\".";
     return s;
 }
 
