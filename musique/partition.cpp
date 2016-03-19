@@ -169,12 +169,12 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
     }
 
     //if(avancement > 1) {
-        pn.setColor(QColor(0,0,255,255));
-        painter.setPen(pn);
-        painter.drawLine((80*avancement)+8 , 10 , (80*avancement)+8 , 160 );
-        if(avancement==8) {
-            avancement=0;
-        }
+//        pn.setColor(QColor(0,0,255,255));
+//        painter.setPen(pn);
+//        painter.drawLine((80*avancement)+8 , 10 , (80*avancement)+8 , 160 );
+//        if(avancement==8) {
+//            avancement=0;
+//        }
     //}
 
 }

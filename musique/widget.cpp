@@ -239,13 +239,12 @@ void Widget::handleButton(int note) {
 //                    QMessageBox::Ok);
 
         //NOUVEAU POPUP MARCHE?
-            QMessageBox *message = new QMessageBox(this);
+            QMessageBox *message = new QMessageBox(widgetPartition);
             message->setText(calcule_resultat());
             message->addButton( QMessageBox::Ok );
             message->setWindowTitle(tr("Résultat de votre performance"));
-            message->show();
+//            message->show();
 
-            message->move( this->width() / 4, this->height() /2.1 );
             message->exec();
         //FIN NOUVEAU POPUP
 
