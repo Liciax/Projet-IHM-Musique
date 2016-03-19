@@ -111,9 +111,9 @@ Widget::Widget(QWidget *parent) :
     //onglet raccourci clavier
     QLayout *layoutRacc = new QVBoxLayout;
     QLabel *labelRacc = new QLabel;
-    QPixmap imageRacc = QPixmap(":tutonotes.png");
-    labelTuto->setPixmap(imageRacc);
-    layoutTuto->addWidget(labelRacc);
+    QPixmap imageRacc = QPixmap(":raccfin.png");
+    labelRacc->setPixmap(imageRacc);
+    layoutRacc->addWidget(labelRacc);
     raccourci->setLayout(layoutRacc);
 
     //mapper de note et son
