@@ -25,7 +25,6 @@ Widget::Widget(QWidget *parent) :
 
     //Création des labels
     labelPartition = new QLabel(" Choisir une partition : ");
-    //labelPartition->setStyleSheet("background-color: rgb(255, 255, 255)");
     labelPartition->setFont(QFont("Sans-serif", 12, QFont::Bold));
 
     //ComboBox pour les partitions
@@ -100,6 +99,22 @@ Widget::Widget(QWidget *parent) :
 
     //onglet training
     exercice->setLayout(layoutPrincipal);
+
+    //onglet cours
+    QLayout *layoutTuto = new QVBoxLayout;
+    QLabel *labelTuto = new QLabel;
+    QPixmap imageTuto = QPixmap(":tutonotes.png");
+    labelTuto->setPixmap(imageTuto);
+    layoutTuto->addWidget(labelTuto);
+    cours->setLayout(layoutTuto);
+
+    //onglet raccourci clavier
+    QLayout *layoutRacc = new QVBoxLayout;
+    QLabel *labelRacc = new QLabel;
+    QPixmap imageRacc = QPixmap(":tutonotes.png");
+    labelTuto->setPixmap(imageRacc);
+    layoutTuto->addWidget(labelRacc);
+    raccourci->setLayout(layoutRacc);
 
     //mapper de note et son
     mapper = new QSignalMapper(this);

@@ -4,5 +4,8 @@
         <file>icone.png</file>
         <file>recommencer.png</file>
         <file>retour.png</file>
+        <file>raccbas.png</file>
+        <file>racchaut.png</file>
+        <file>tutonotes.png</file>
     </qresource>
 </RCC>

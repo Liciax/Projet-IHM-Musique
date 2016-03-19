@@ -1,10 +1,10 @@
 <Partition>
-	<Note ID="0" Code="8"/>
+	<Note ID="0" Code="7"/>
   	<Note ID="1" Code="9"/>
-  	<Note ID="2" Code="10"/>
-	<Note ID="3" Code="11"/>
+  	<Note ID="2" Code="4"/>
+	<Note ID="3" Code="2"/>
 	<Note ID="4" Code="12"/>
-	<Note ID="5" Code="13"/>
-	<Note ID="6" Code="14"/>
-	<Note ID="7" Code="15"/>
+	<Note ID="5" Code="5"/>
+	<Note ID="6" Code="13"/>
+	<Note ID="7" Code="10"/>
 </Partition>

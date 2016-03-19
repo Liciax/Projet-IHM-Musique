@@ -148,6 +148,8 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
     listeNote = liseur->getListeNotes();
     for(i = 1; i <= liseur->getListeNotes().size(); i++) {
 
+    pn.setColor(Qt::black);
+    painter.setPen(pn);
       switch(liseur->getListeNotes().at(i-1)) {
 
             case 1:
