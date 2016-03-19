@@ -111,7 +111,7 @@ Widget::Widget(QWidget *parent) :
     //onglet raccourci clavier
     QLayout *layoutRacc = new QVBoxLayout;
     QLabel *labelRacc = new QLabel;
-    QPixmap imageRacc = QPixmap(":raccfin.png");
+    QPixmap imageRacc = QPixmap(":raccourcit.png");
     labelRacc->setPixmap(imageRacc);
     layoutRacc->addWidget(labelRacc);
     raccourci->setLayout(layoutRacc);
