@@ -12,19 +12,27 @@ Widget::Widget(QWidget *parent) :
     this->setWindowIcon(QPixmap(":icone.png"));
     this->setWindowTitle("Musicodibou");
 
-    this->setMinimumSize(790, 650);
-    this->setMaximumSize(790, 550);
+    this->setMinimumSize(810, 680);
+    this->setMaximumSize(810, 680);
+
+
+    QTabWidget *onglets = new QTabWidget(this);
+    onglets->setGeometry(10, 10 ,790, 660);
+    cours = new QWidget;
+    exercice = new QWidget;
+    raccourci = new QWidget;
 
 
     //Création des labels
     labelPartition = new QLabel(" Choisir une partition : ");
-    labelPartition->setStyleSheet("background-color: rgb(255, 255, 255)");
-    labelPartition->setFont(QFont( "Ubuntu", 11, QFont::Bold));
+    //labelPartition->setStyleSheet("background-color: rgb(255, 255, 255)");
+    labelPartition->setFont(QFont("Sans-serif", 12, QFont::Bold));
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
     boxPartition->addItem("La mélodie du parrain", Partition::Partition1);
     boxPartition->addItem("The world is molli", Partition::Partition2);
+    boxPartition->addItem("La marseillaise", Partition::Partition3);
 
     boxAfficheNote = new QCheckBox("Afficher les notes sur le piano");
     boxAfficheNote->setFocusPolicy(Qt::NoFocus);
@@ -32,10 +40,15 @@ Widget::Widget(QWidget *parent) :
     //PushBoutton valider et retour
     b_restart = new QPushButton("Recommencer", this);
     b_restart->setCursor(Qt::PointingHandCursor);
-    b_restart->setIcon(QPixmap(":restart.png"));
+    b_restart->setFocusPolicy(Qt::NoFocus);
+    QPixmap recommencerIcon = QPixmap(":recommencer.png");
+    b_restart->setIcon(recommencerIcon);
 
     b_back1 = new QPushButton("Revenir en arriere", this);
     b_back1->setCursor(Qt::PointingHandCursor);
+    b_back1->setFocusPolicy(Qt::NoFocus);
+    QPixmap retourIcon = QPixmap(":retour.png");
+    b_back1->setIcon(retourIcon);
 
     //Création du layout des sélection/choix
     layoutChoix = new QGridLayout;
@@ -56,7 +69,7 @@ Widget::Widget(QWidget *parent) :
     //font = new QFont();
     //font.setPixelSize(24);
     //widgetNoteTape->setFont(font);
-    QFont f( "Ubuntu", 14, QFont::Bold);
+    QFont f("Sans-serif", 12, QFont::Bold);
     widgetNoteTape->setFont(f);
 
     widgetNoteTape->setMinimumSize(QSize(768,60));
@@ -77,12 +90,16 @@ Widget::Widget(QWidget *parent) :
     layoutPrincipal->addLayout(layoutChoix);
     layoutPrincipal->addWidget(widgetPartition);
     //layoutPrincipal->addLayout(layoutNoteTape);
-    layoutPrincipal->addWidget(widgetNoteTape);
     widgetNoteTape->setStyleSheet("background-color: rgb(255, 255, 255)");
+    layoutPrincipal->addWidget(widgetNoteTape);
+
     //layoutPrincipal->addWidget(boxAfficheNote);
     layoutPrincipal->addLayout(layoutPiano);
 
-    this->setLayout(layoutPrincipal);
+    //this->setLayout(layoutPrincipal);
+
+    //onglet training
+    exercice->setLayout(layoutPrincipal);
 
     //mapper de note et son
     mapper = new QSignalMapper(this);
@@ -149,6 +166,10 @@ Widget::Widget(QWidget *parent) :
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
     boxAfficheNote->setChecked(false);
 
+    onglets->addTab(exercice, "Entrainement");
+    onglets->addTab(cours, "Cours de solfège");
+    onglets->addTab(raccourci, "Raccourcis clavier");
+
 }
 
 QString Widget::calcule_resultat() {
@@ -162,7 +183,7 @@ QString Widget::calcule_resultat() {
 
     }
     QString s;
-    s = s + "vous avez " + QString::number(reussi) + " bonnes reponses sur " + QString::number(part->getListeNote().size()) + " (les bonnes reponses sont en <span style=' color:#32CD32;'>vert</span>, les mauvaises en <span style=' color:#ff0000;'>rouge</span>).\n Vous retrouverez vos scores dans le fichier logs.txt.";
+    s = s + "vous avez <b>" + QString::number(reussi) + "</b> bonnes reponses sur <b>" + QString::number(part->getListeNote().size()) + "</b> (les bonnes reponses sont en <span style=' color:#32CD32;'>vert</span>, les mauvaises en <span style=' color:#ff0000;'>rouge</span>).\n Vous retrouverez vos scores dans le fichier logs.txt.";
     return s;
 }
 
@@ -394,21 +415,21 @@ void Widget::setAfficheNote(bool note)
     part->writelog(102);
     this->note = note;
     if(this->note) {
-        ui->do_1->setText("Do");
-        ui->re_1->setText("Ré");
-        ui->mi_1->setText("Mi");
-        ui->fa_1->setText("Fa");
-        ui->sol_1->setText("Sol");
-        ui->la_1->setText("La");
-        ui->si_1->setText("Si");
-        ui->do_2->setText("Do");
-        ui->re_2->setText("Ré");
-        ui->mi_2->setText("Mi");
-        ui->fa_2->setText("Fa");
-        ui->sol_2->setText("Sol");
-        ui->la_2->setText("La");
-        ui->si_2->setText("Si");
-        ui->do_3->setText("Do");
+        ui->do_1->setText("Do1");
+        ui->re_1->setText("Ré1");
+        ui->mi_1->setText("Mi1");
+        ui->fa_1->setText("Fa1");
+        ui->sol_1->setText("Sol1");
+        ui->la_1->setText("La1");
+        ui->si_1->setText("Si1");
+        ui->do_2->setText("Do2");
+        ui->re_2->setText("Ré2");
+        ui->mi_2->setText("Mi2");
+        ui->fa_2->setText("Fa2");
+        ui->sol_2->setText("Sol2");
+        ui->la_2->setText("La2");
+        ui->si_2->setText("Si2");
+        ui->do_3->setText("Do3");
 
     } else {
         ui->do_1->setText("");

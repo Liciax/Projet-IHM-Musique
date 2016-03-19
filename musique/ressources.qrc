@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>clef_sol.svg</file>
         <file>icone.png</file>
-        <file>restart.png</file>
+        <file>recommencer.png</file>
+        <file>retour.png</file>
     </qresource>
 </RCC>

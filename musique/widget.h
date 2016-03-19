@@ -19,6 +19,7 @@
 #include <QList>
 #include <QTextEdit>
 #include <QString>
+#include <QTabWidget>
 #include <QSignalMapper>
 #include <QMessageBox>
 #include "partition.h"
@@ -48,6 +49,12 @@ public slots:
     void set_aff_notes(QList<int> liste);
 
 private:
+
+    QWidget *cours;
+    QWidget *exercice;
+    QWidget *raccourci;
+   // QTabWidget *onglets;
+
 
     Ui::Widget *ui;
     Partition * part;

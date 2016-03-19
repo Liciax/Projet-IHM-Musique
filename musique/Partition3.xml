@@ -1,0 +1,10 @@
+<Partition>
+	<Note ID="0" Code="2"/>
+  	<Note ID="1" Code="4"/>
+  	<Note ID="2" Code="6"/>
+	<Note ID="3" Code="4"/>
+	<Note ID="4" Code="6"/>
+	<Note ID="5" Code="4"/>
+	<Note ID="6" Code="2"/>
+	<Note ID="7" Code="3"/>
+</Partition>

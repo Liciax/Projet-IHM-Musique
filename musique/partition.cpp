@@ -76,6 +76,9 @@ void Partition::setResults(const QList<int> &value)
         case Partition2:
             s=("Partition2");
             break;
+        case Partition3:
+            s=("Partition3");
+            break;
         }
         i = (reussi*100)/8;
         out << "[" << now.toString("le dddd d MMMM yyyy, hh:mm") << "], partition: " << s << " , votre taut de reussite: " << i<< "%\n";
@@ -116,6 +119,9 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
         break;
     case Partition2:
         loadPartition("Partition2");
+        break;
+    case Partition3:
+        loadPartition("Partition3");
         break;
     }
     QPainter painter(this);
@@ -253,6 +259,9 @@ void Partition::writelog(int bouton) {
                 break;
             case Partition2:
                 s=("Partition2");
+                break;
+            case Partition3:
+                loadPartition("Partition3");
                 break;
             }
             out << dayoflog.toString("[hh:mm:ss:zzz]") << ", partition: " << s << ", touche: " << boutonTapee << "\n";
