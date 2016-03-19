@@ -25,13 +25,14 @@ Widget::Widget(QWidget *parent) :
 
     //Création des labels
     labelPartition = new QLabel(" Choisir une partition : ");
-    labelPartition->setStyleSheet("background-color: rgb(255, 255, 255)");
+    //labelPartition->setStyleSheet("background-color: rgb(255, 255, 255)");
     labelPartition->setFont(QFont("Sans-serif", 12, QFont::Bold));
 
     //ComboBox pour les partitions
     boxPartition = new QComboBox;
     boxPartition->addItem("La mélodie du parrain", Partition::Partition1);
     boxPartition->addItem("The world is molli", Partition::Partition2);
+    boxPartition->addItem("La marseillaise", Partition::Partition3);
 
     boxAfficheNote = new QCheckBox("Afficher les notes sur le piano");
     boxAfficheNote->setFocusPolicy(Qt::NoFocus);
@@ -165,9 +166,9 @@ Widget::Widget(QWidget *parent) :
     //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
     boxAfficheNote->setChecked(false);
 
-    onglets->addTab(cours, "Cours");
     onglets->addTab(exercice, "Entrainement");
-    onglets->addTab(raccourci, "Raccourci");
+    onglets->addTab(cours, "Cours de solfège");
+    onglets->addTab(raccourci, "Raccourcis clavier");
 
 }
 

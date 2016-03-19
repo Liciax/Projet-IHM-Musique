@@ -14,7 +14,7 @@ class Partition : public QWidget
 
 public :
 
-    enum Part {Partition1, Partition2};
+    enum Part {Partition1, Partition2, Partition3};
 
      Partition(QWidget *parent = 0);
      void paintEvent(QPaintEvent *event);
