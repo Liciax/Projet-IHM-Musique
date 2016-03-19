@@ -395,7 +395,7 @@ void Widget::reset() {
 
 void Widget::retour_en_arriere() {
     if(vectorNote.size() > 0 ) {
-        qDebug() <<"a "  << part->getAvancement();
+//        qDebug() <<"a "  << part->getAvancement();
         if(part->getAvancement() == 0) {
             part->setAvancement(7);
         } else {
