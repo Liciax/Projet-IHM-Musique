@@ -1,8 +1,13 @@
 #include "widget.h"
 #include "ui_widget.h"
 
-const int IdRole = Qt::UserRole;
+const int IdRole = Qt::UserRole; /**< TODO */
 
+/**
+ * @brief
+ *
+ * @param parent
+ */
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
@@ -188,6 +193,11 @@ Widget::Widget(QWidget *parent) :
 
 }
 
+/**
+ * @brief
+ *
+ * @return QString
+ */
 QString Widget::calcule_resultat() {
     int i;
     int reussi = 0;
@@ -203,6 +213,11 @@ QString Widget::calcule_resultat() {
     return s;
 }
 
+/**
+ * @brief
+ *
+ * @param note
+ */
 void Widget::handleButton(int note) {
     switch(note) {
         case 1: {
@@ -325,6 +340,11 @@ void Widget::handleButton(int note) {
  *
  */
 
+/**
+ * @brief
+ *
+ * @param note
+ */
 void Widget::add_note_entree(int note) {
 
     switch(note) {
@@ -378,6 +398,11 @@ void Widget::add_note_entree(int note) {
 
 }
 
+/**
+ * @brief
+ *
+ * @param liste
+ */
 void Widget::set_aff_notes(QList<int> liste) {
     int i;
     for(i = 0; i<liste.size(); i++) {
@@ -385,6 +410,10 @@ void Widget::set_aff_notes(QList<int> liste) {
     }
 }
 
+/**
+ * @brief
+ *
+ */
 void Widget::reset() {
     part->setAvancement(1);
     texte = "Notes rentrées : ";
@@ -394,6 +423,10 @@ void Widget::reset() {
     part->writelog(101);
 }
 
+/**
+ * @brief
+ *
+ */
 void Widget::retour_en_arriere() {
     if(vectorNote.size() > 0 ) {
 //        qDebug() <<"a "  << part->getAvancement();
@@ -413,6 +446,10 @@ void Widget::retour_en_arriere() {
 }
 
 
+/**
+ * @brief
+ *
+ */
 void Widget::partChanged()
 {
     Partition::Part parti = Partition::Part(boxPartition->itemData(
@@ -425,6 +462,11 @@ void Widget::partChanged()
 
 }
 
+/**
+ * @brief
+ *
+ * @param note
+ */
 void Widget::setAfficheNote(bool note)
 {
 
@@ -482,6 +524,10 @@ void Widget::setAfficheNote(bool note)
     update();
 }
 
+/**
+ * @brief
+ *
+ */
 Widget::~Widget()
 {
     delete ui;

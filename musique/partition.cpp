@@ -1,5 +1,10 @@
 #include "partition.h"
 
+/**
+ * @brief
+ *
+ * @param parent
+ */
 Partition::Partition(QWidget *parent)
     : QWidget(parent)
 {
@@ -16,38 +21,73 @@ Partition::Partition(QWidget *parent)
     }
 }
 
+/**
+ * @brief
+ *
+ * @return QSize
+ */
 QSize Partition::minimumSizeHint() const
 {
     return QSize(200, 220);
 }
 
+/**
+ * @brief
+ *
+ * @return QSize
+ */
 QSize Partition::sizeHint() const
 {
     return QSize(800, 220);
 }
 
+/**
+ * @brief
+ *
+ * @param part
+ */
 void Partition::setPart(Part part)
 {
     this->part = part;
     this->avancement = 1;
     update();
 }
+/**
+ * @brief
+ *
+ * @return QList<int>
+ */
 QList<int> Partition::getListeNote() const
 {
     return listeNote;
 }
 
+/**
+ * @brief
+ *
+ * @param value
+ */
 void Partition::setListeNote(const QList<int> &value)
 {
     listeNote = value;
 }
 
 
+/**
+ * @brief
+ *
+ * @return QList<QColor>
+ */
 QList<QColor> Partition::getResults() const
 {
     return results;
 }
 
+/**
+ * @brief
+ *
+ * @param value
+ */
 void Partition::setResults(const QList<int> &value)
 {
     int i;
@@ -86,17 +126,31 @@ void Partition::setResults(const QList<int> &value)
 
 }
 
+/**
+ * @brief
+ *
+ * @return int
+ */
 int Partition::getAvancement() const
 {
     return avancement;
 }
 
+/**
+ * @brief
+ *
+ * @param value
+ */
 void Partition::setAvancement(int value)
 {
     avancement = value;
     update();
 }
 
+/**
+ * @brief
+ *
+ */
 void Partition::resetColors() {
     int i;
     for(i = 0; i < 8; i++)
@@ -107,10 +161,20 @@ void Partition::resetColors() {
 }
 
 
+/**
+ * @brief
+ *
+ * @param s
+ */
 void Partition::loadPartition(QString s) {
     liseur->lireFichier(s);
 }
 
+/**
+ * @brief
+ *
+ * @param
+ */
 void Partition::paintEvent(QPaintEvent * /* event */) {
     int i;
     switch(part) {
@@ -187,6 +251,11 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
 
 }
 
+/**
+ * @brief
+ *
+ * @param bouton
+ */
 void Partition::writelog(int bouton) {
     QString boutonTapee;
     switch(bouton) {

@@ -1,11 +1,22 @@
 #include "monreaderamoi.h"
 
+/**
+ * @brief
+ *
+ */
 monReaderAMoi::monReaderAMoi()
 {
 }
 
 
 
+/**
+ * @brief
+ *
+ * @param root
+ * @param tag
+ * @param att
+ */
 void monReaderAMoi::retrievElements(QDomElement root, QString tag, QString att) {
     listeNotes.clear();
     QDomNodeList nodes = root.elementsByTagName(tag);
@@ -23,6 +34,12 @@ void monReaderAMoi::retrievElements(QDomElement root, QString tag, QString att) 
     }
 }
 
+/**
+ * @brief
+ *
+ * @param s
+ * @return int
+ */
 int monReaderAMoi::lireFichier(QString s) {
     // Create a document to write XML
     QDomDocument document;
@@ -56,11 +73,21 @@ int monReaderAMoi::lireFichier(QString s) {
     //qDebug() << "Reading finished";
     return 0;
 }
+/**
+ * @brief
+ *
+ * @return QList<int>
+ */
 QList<int> monReaderAMoi::getListeNotes() const
 {
     return listeNotes;
 }
 
+/**
+ * @brief
+ *
+ * @param value
+ */
 void monReaderAMoi::setListeNotes(const QList<int> &value)
 {
     listeNotes = value;
