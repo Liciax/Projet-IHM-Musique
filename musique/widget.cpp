@@ -374,7 +374,7 @@ void Widget::set_aff_notes(QList<int> liste) {
 }
 
 /**
- * @brief remet
+ * @brief remet l'exercice a debut
  *
  */
 void Widget::reset() {
@@ -387,7 +387,7 @@ void Widget::reset() {
 }
 
 /**
- * @brief
+ * @brief retourne d'une note en arriere dans l'exercice
  *
  */
 void Widget::retour_en_arriere() {
@@ -410,7 +410,7 @@ void Widget::retour_en_arriere() {
 
 
 /**
- * @brief
+ * @brief change la partition pour celle dans boxPartition
  *
  */
 void Widget::partChanged()
@@ -426,7 +426,7 @@ void Widget::partChanged()
 }
 
 /**
- * @brief
+ * @brief active/desactive l'affichage des notes sur le clavier
  *
  * @param note
  */
@@ -488,7 +488,7 @@ void Widget::setAfficheNote(bool note)
 }
 
 /**
- * @brief
+ * @brief destructeur
  *
  */
 Widget::~Widget()

@@ -11,7 +11,7 @@ monReaderAMoi::monReaderAMoi()
 
 
 /**
- * @brief
+ * @brief recupere, pour chaque element dans root ayant comme nom de balise tag, la valeur de l'attribut att
  *
  * @param root
  * @param tag
@@ -35,18 +35,18 @@ void monReaderAMoi::retrievElements(QDomElement root, QString tag, QString att) 
 }
 
 /**
- * @brief
+ * @brief lis un fichier et remplis la liste des notes
  *
- * @param s
- * @return int
+ * @param s le nom du fichier a lire
+ * @return int 0 si ok, -1 si erreur
  */
 int monReaderAMoi::lireFichier(QString s) {
-    // Create a document to write XML
+    // cree un document pour lire de l'xml
     QDomDocument document;
 
     QString fich = "../musique/" + s + ".xml";
 
-    // Open a file for reading
+    // ouvre le fichier en ecriture
     QFile file(fich);
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -55,7 +55,7 @@ int monReaderAMoi::lireFichier(QString s) {
     }
     else
     {
-        // loading
+        // chargement
         if(!document.setContent(&file))
         {
             qDebug() << "Failed to load the file for reading.";
@@ -64,17 +64,16 @@ int monReaderAMoi::lireFichier(QString s) {
         file.close();
     }
 
-    // Getting root element
+    // recuperation de l'element root
     QDomElement root = document.firstChildElement();
 
-    // retrievelements(QDomElement root, QString tag, QString att)
     retrievElements(root, "Note", "Code");
 
-    //qDebug() << "Reading finished";
     return 0;
 }
+
 /**
- * @brief
+ * @brief getteur
  *
  * @return QList<int>
  */
@@ -84,7 +83,7 @@ QList<int> monReaderAMoi::getListeNotes() const
 }
 
 /**
- * @brief
+ * @brief setteur
  *
  * @param value
  */
