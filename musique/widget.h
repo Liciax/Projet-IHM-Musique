@@ -8,10 +8,7 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
-#include <QPalette>
-#include <QColor>
 #include <QPainter>
-#include <QBrush>
 #include <QRectF>
 #include <QPaintEvent>
 #include <QSvgWidget>
@@ -44,19 +41,18 @@ public slots:
     void setAfficheNote(bool note);
     void reset();
     void retour_en_arriere();
-
     void add_note_entree(int note);
     void set_aff_notes(QList<int> liste);
 
 private:
 
+    Ui::Widget *ui;
+
     QWidget *cours;
     QWidget *exercice;
     QWidget *raccourci;
-   // QTabWidget *onglets;
+    QWidget *widgetPartition;
 
-
-    Ui::Widget *ui;
     Partition * part;
     QSignalMapper * mapper;
 
@@ -66,19 +62,20 @@ private:
 
     QComboBox *boxPartition;
     QCheckBox *boxAfficheNote;
+
     QLabel *labelPartition;
 
     QPushButton *b_restart;
     QPushButton *b_back1;
 
-    QWidget *widgetPartition;
     QTextEdit *widgetNoteTape;
-
     QString texte;
     QFont font;
 
     QSvgWidget *svg;
+
     QList<int> vectorNote;
+
     int avancement;
     bool note;
 

@@ -1,9 +1,9 @@
 #include "partition.h"
 
 /**
- * @brief
+ * @brief Constructeur de Partition
  *
- * @param parent
+ * @param parent QWidget parent de partition
  */
 Partition::Partition(QWidget *parent)
     : QWidget(parent)
@@ -22,9 +22,9 @@ Partition::Partition(QWidget *parent)
 }
 
 /**
- * @brief
+ * @brief Fonction qui impose une taille minimale de la partition
  *
- * @return QSize
+ * @return QSize la taille de la partition
  */
 QSize Partition::minimumSizeHint() const
 {
@@ -32,9 +32,9 @@ QSize Partition::minimumSizeHint() const
 }
 
 /**
- * @brief
+ * @brief Fonction pour imposer la taille de la partition
  *
- * @return QSize
+ * @return QSize la taille de la partition
  */
 QSize Partition::sizeHint() const
 {
@@ -42,9 +42,9 @@ QSize Partition::sizeHint() const
 }
 
 /**
- * @brief
+ * @brief Setter de partition
  *
- * @param part
+ * @param part Partition
  */
 void Partition::setPart(Part part)
 {
@@ -53,9 +53,9 @@ void Partition::setPart(Part part)
     update();
 }
 /**
- * @brief
+ * @brief Getter de listNote
  *
- * @return QList<int>
+ * @return listeNote QList<int>
  */
 QList<int> Partition::getListeNote() const
 {
@@ -63,7 +63,7 @@ QList<int> Partition::getListeNote() const
 }
 
 /**
- * @brief
+ * @brief Setter de ListNote
  *
  * @param value
  */
@@ -74,9 +74,9 @@ void Partition::setListeNote(const QList<int> &value)
 
 
 /**
- * @brief
+ * @brief Getter de resultats
  *
- * @return QList<QColor>
+ * @return QList<QColor> liste des couleurs des notes en fonction des resultats obtenus
  */
 QList<QColor> Partition::getResults() const
 {
@@ -84,9 +84,10 @@ QList<QColor> Partition::getResults() const
 }
 
 /**
- * @brief
+ * @brief Fonction qui gere les resultats obtenus
+ * Elle colore les notes en rouge ou vert et enregistre les resultats dans un fichier
  *
- * @param value
+ * @param value QList de resultat
  */
 void Partition::setResults(const QList<int> &value)
 {
@@ -127,9 +128,9 @@ void Partition::setResults(const QList<int> &value)
 }
 
 /**
- * @brief
+ * @brief Getter de l'avancement
  *
- * @return int
+ * @return int l'avancement
  */
 int Partition::getAvancement() const
 {
@@ -137,9 +138,9 @@ int Partition::getAvancement() const
 }
 
 /**
- * @brief
+ * @brief Setter de l'avancement (modifie l'emplacement du curseur)
  *
- * @param value
+ * @param value int le nouvel avancement
  */
 void Partition::setAvancement(int value)
 {
@@ -148,7 +149,7 @@ void Partition::setAvancement(int value)
 }
 
 /**
- * @brief
+ * @brief Fonction qui restaure les couleurs des notes à noire
  *
  */
 void Partition::resetColors() {
@@ -162,31 +163,32 @@ void Partition::resetColors() {
 
 
 /**
- * @brief
+ * @brief Fonction qui charge un fichier
  *
- * @param s
+ * @param s QString nom du fichier
  */
 void Partition::loadPartition(QString s) {
     liseur->lireFichier(s);
 }
 
 /**
- * @brief
+ * @brief Fonction appelee automatiquement pour la creation des partitions
+ * Elle affichera les lignes de la partition, les notes et le changement de couleur
  *
- * @param
+ * @param QPaintEvent
  */
 void Partition::paintEvent(QPaintEvent * /* event */) {
     int i;
     switch(part) {
-    case Partition1:
-        loadPartition("Partition1");
-        break;
-    case Partition2:
-        loadPartition("Partition2");
-        break;
-    case Partition3:
-        loadPartition("Partition3");
-        break;
+        case Partition1:
+            loadPartition("Partition1");
+            break;
+        case Partition2:
+            loadPartition("Partition2");
+            break;
+        case Partition3:
+            loadPartition("Partition3");
+            break;
     }
     QPainter painter(this);
 
@@ -207,15 +209,12 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
   brush.setStyle(Qt::SolidPattern);
   painter.setBrush(brush);
 
-
-  //x1, y1, x2, y2
     listeNote = liseur->getListeNotes();
     for(i = 1; i <= liseur->getListeNotes().size(); i++) {
 
-    pn.setColor(Qt::black);
-    painter.setPen(pn);
-      switch(liseur->getListeNotes().at(i-1)) {
-
+        pn.setColor(Qt::black);
+        painter.setPen(pn);
+        switch(liseur->getListeNotes().at(i-1)) {
             case 1:
                 painter.drawLine((80*i)-10,((liseur->getListeNotes().at(i-1)*(-7.4))+118.4) +14, (80*i)+25, ((liseur->getListeNotes().at(i-1)*(-7.4))+118.4)+14);
                 break;
@@ -240,21 +239,19 @@ void Partition::paintEvent(QPaintEvent * /* event */) {
 
     }
 
-    //if(avancement > 1) {
-        pn.setColor(QColor(0,0,255,255));
-        painter.setPen(pn);
-        painter.drawLine((80*avancement)+8 , 10 , (80*avancement)+8 , 160 );
-        if(avancement==8) {
-            avancement=0;
-        }
-    //}
+    pn.setColor(QColor(0,0,255,255));
+    painter.setPen(pn);
+    painter.drawLine((80*avancement)+8 , 10 , (80*avancement)+8 , 160 );
+    if(avancement==8) {
+        avancement=0;
+    }
 
 }
 
 /**
- * @brief
+ * @brief Fonction qui permet d'enregister des logs
  *
- * @param bouton
+ * @param bouton int represente une des actions a enregister
  */
 void Partition::writelog(int bouton) {
     QString boutonTapee;
@@ -317,14 +314,16 @@ void Partition::writelog(int bouton) {
             boutonTapee = " changepart";
             break;}
     }
+
     QDateTime dayoflog = QDateTime::currentDateTime();
     QFile file(dayoflog.toString("logddMMyy") + ".txt");
-        if(!file.open(QIODevice::Append | QIODevice::Text))
-            if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-                return;
-            QTextStream out(&file);
-            QString s;
-            switch(part) {
+
+    if(!file.open(QIODevice::Append | QIODevice::Text))
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+            return;
+        QTextStream out(&file);
+        QString s;
+        switch(part) {
             case Partition1:
                 s=("Partition1");
                 break;
@@ -334,8 +333,8 @@ void Partition::writelog(int bouton) {
             case Partition3:
                 loadPartition("Partition3");
                 break;
-            }
-            out << dayoflog.toString("[hh:mm:ss:zzz]") << ", partition: " << s << ", touche: " << boutonTapee << "\n";
+        }
+        out << dayoflog.toString("[hh:mm:ss:zzz]") << ", partition: " << s << ", touche: " << boutonTapee << "\n";
 
 }
 

@@ -1,7 +1,7 @@
 #include "monreaderamoi.h"
 
 /**
- * @brief
+ * @brief Constructeur de monReaderAMoi
  *
  */
 monReaderAMoi::monReaderAMoi()

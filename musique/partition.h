@@ -1,7 +1,6 @@
 #ifndef PARTITION_H
 #define PARTITION_H
 
-#include <iostream>
 #include <QWidget>
 #include <QColor>
 #include <QPainter>
@@ -49,9 +48,3 @@ private:
 };
 
 #endif // PARTITION_H
-
-
-// QSvgWidget * svg=new QSvgWidget ("2rightarrow.svg",NomQwidget);
-// svg->resize(30,30); // Retailler l'image
-// svg->move(115,5);  //Deplacer l'image
-// zoomSvg->renderer(); //afficher l'image
