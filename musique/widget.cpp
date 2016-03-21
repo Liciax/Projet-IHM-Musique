@@ -1,12 +1,12 @@
 #include "widget.h"
 #include "ui_widget.h"
 
-const int IdRole = Qt::UserRole; /**< TODO */
+const int IdRole = Qt::UserRole;
 
 /**
- * @brief
+ * @brief constructeur de widget
  *
- * @param parent
+ * @param parent le widget pere
  */
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -22,13 +22,13 @@ Widget::Widget(QWidget *parent) :
 
 
     QTabWidget *onglets = new QTabWidget(this);
-    onglets->setGeometry(10, 10 ,790, 660);
+    onglets->setGeometry(10, 10 ,790, 660); //on declare la taille des 3 fenetres
     cours = new QWidget;
     exercice = new QWidget;
     raccourci = new QWidget;
 
-
-    //Création des labels
+    //on commence par l'onglet exercice:
+    //Création du label
     labelPartition = new QLabel(" Choisir une partition : ");
     labelPartition->setFont(QFont("Sans-serif", 12, QFont::Bold));
 
@@ -38,11 +38,11 @@ Widget::Widget(QWidget *parent) :
     boxPartition->addItem("The world is molli", Partition::Partition2);
     boxPartition->addItem("La marseillaise", Partition::Partition3);
 
+    //checkbox pour afficher ou non les notes sur les touches
     boxAfficheNote = new QCheckBox("Afficher les notes sur le piano");
-    //boxAfficheNote->setCheckState(Qt::Checked);
     boxAfficheNote->setFocusPolicy(Qt::NoFocus);
 
-    //PushBoutton valider et retour
+    //PushBoutton recommencer et retour
     b_restart = new QPushButton("Recommencer", this);
     b_restart->setCursor(Qt::PointingHandCursor);
     b_restart->setFocusPolicy(Qt::NoFocus);
@@ -55,31 +55,34 @@ Widget::Widget(QWidget *parent) :
     QPixmap retourIcon = QPixmap(":retour.png");
     b_back1->setIcon(retourIcon);
 
-    //Création du layout des sélection/choix
+    //Création du layout des sélection/choix: on va commencer a agencer les objets
+    //1er layout pour le choix de partition
     layoutChoix = new QGridLayout;
 
-    layoutChoix->addWidget(labelPartition, 0, 0);
-    layoutChoix->addWidget(boxPartition, 0, 1, 1, 2);
-    //layoutChoix->addWidget(b_restart, 1, 2);
+    layoutChoix->addWidget(labelPartition, 0, 0); //tout en haut de l'onglet
+    layoutChoix->addWidget(boxPartition, 0, 1, 1, 2);//en dessous du label
 
+    //2eme layout pour le piano/pour les boutons
     layoutPiano = new QGridLayout;
-    layoutPiano->addWidget(boxAfficheNote, 0 ,1, 1, 1);
-    layoutPiano->addWidget(b_restart, 0, 3, 1 ,1);
-    layoutPiano->addWidget(b_back1, 0, 2, 1 ,1);
-    layoutPiano->addWidget(ui->widget, 1, 1, 1, 3);
+    layoutPiano->addWidget(boxAfficheNote, 0 ,1, 1, 1);//en dessous de la partition
+    layoutPiano->addWidget(b_restart, 0, 3, 1 ,1);//a droite de boxAfficheNote
+    layoutPiano->addWidget(b_back1, 0, 2, 1 ,1);//a droite de b_restart
+    layoutPiano->addWidget(ui->widget, 1, 1, 1, 3);//tout en bas
+
 
     texte = QString("Notes rentrées : ");
 
+    //widget pour afficher l'historique des notes entrées
     widgetNoteTape = new QTextEdit(texte);
-    //font = new QFont();
-    //font.setPixelSize(24);
-    //widgetNoteTape->setFont(font);
+    //on veut ecrire en plus gros et lisible
     QFont f("Sans-serif", 12, QFont::Bold);
     widgetNoteTape->setFont(f);
 
+    //on empeche le changement de la taille du widget et l'ecriture
     widgetNoteTape->setMinimumSize(QSize(768,60));
     widgetNoteTape->setMaximumSize(QSize(768,60));
     widgetNoteTape->setReadOnly(true);
+    widgetNoteTape->setStyleSheet("background-color: rgb(255, 255, 255)");
 
     //Création de la partition
     widgetPartition = new QWidget();
@@ -90,23 +93,19 @@ Widget::Widget(QWidget *parent) :
     svg->renderer();
 
 
-    //Création du layout principale
+    //Création du layout principal : on rassemble le tout
     layoutPrincipal = new QVBoxLayout;
     layoutPrincipal->addLayout(layoutChoix);
     layoutPrincipal->addWidget(widgetPartition);
-    //layoutPrincipal->addLayout(layoutNoteTape);
-    widgetNoteTape->setStyleSheet("background-color: rgb(255, 255, 255)");
     layoutPrincipal->addWidget(widgetNoteTape);
-
-    //layoutPrincipal->addWidget(boxAfficheNote);
     layoutPrincipal->addLayout(layoutPiano);
 
-    //this->setLayout(layoutPrincipal);
+    //fin de la creation de l'onglet exercice
 
-    //onglet training
+    //onglet exercice
     exercice->setLayout(layoutPrincipal);
 
-    //onglet cours
+    //creation de l'onglet cours
     QLayout *layoutTuto = new QVBoxLayout;
     QLabel *labelTuto = new QLabel;
     QPixmap imageTuto = QPixmap(":tutonotes.png");
@@ -114,7 +113,7 @@ Widget::Widget(QWidget *parent) :
     layoutTuto->addWidget(labelTuto);
     cours->setLayout(layoutTuto);
 
-    //onglet raccourci clavier
+    //creation de l'onglet raccourcis clavier
     QLayout *layoutRacc = new QVBoxLayout;
     QLabel *labelRacc = new QLabel;
     QPixmap imageRacc = QPixmap(":raccourcit.png");
@@ -122,10 +121,12 @@ Widget::Widget(QWidget *parent) :
     layoutRacc->addWidget(labelRacc);
     raccourci->setLayout(layoutRacc);
 
+    //fin de la creation des onglets: debut de la connexion des boutons
     //mapper de note et son
     mapper = new QSignalMapper(this);
 
-
+    //on map toutes les touches du clavier au son correspondant et au raccourci correspondant
+    //le mappeur permet d'intercepter le signal d'un bouton et de lui ajouter une valeur
     connect(ui->do_1, SIGNAL(clicked()), mapper, SLOT(map()));
     ui->do_1->setShortcut(tr("q"));
     mapper->setMapping(ui->do_1, 1);
@@ -172,21 +173,22 @@ Widget::Widget(QWidget *parent) :
     ui->do_3->setShortcut(tr(";"));
     mapper->setMapping(ui->do_3, 15);
 
-    connect(mapper, SIGNAL(mapped(int)), this, SLOT(handleButton(int)));
+    connect(mapper, SIGNAL(mapped(int)), this, SLOT(handleButton(int)));//on relie tout le clavier
 
     connect(boxPartition, SIGNAL(activated(int)),
-            this, SLOT(partChanged()));
+            this, SLOT(partChanged()));//on relie le choix de partition a la fonction correspondante
     connect(boxAfficheNote, SIGNAL(toggled(bool)),
-            this, SLOT(setAfficheNote(bool)));
+            this, SLOT(setAfficheNote(bool)));//on relie la checkbox a la fonction correspondante
 
     connect(b_restart, SIGNAL(clicked()), this, SLOT(reset()));
-    b_restart->setShortcut(tr("r"));
+    b_restart->setShortcut(tr("r"));//on relie le bouton recommencer a sa fonction et on ajoute un raccourci clavier
     connect(b_back1, SIGNAL(clicked()), this, SLOT(retour_en_arriere()));
-    b_back1->setShortcut(Qt::Key_Backspace);
+    b_back1->setShortcut(Qt::Key_Backspace);//on relie le bouton revenir en arriere a sa fonction et on ajoute un raccourci clavier
 
-    //QObject::connect(b_retour, SIGNAL(clicked()), this, SLOT(playSound()));
+
     boxAfficheNote->setChecked(false);
 
+    //et enfin on assemble les 3 ongets
     onglets->addTab(exercice, "Entrainement");
     onglets->addTab(cours, "Cours de solfège");
     onglets->addTab(raccourci, "Raccourcis clavier");
@@ -194,9 +196,10 @@ Widget::Widget(QWidget *parent) :
 }
 
 /**
- * @brief
+ * @brief calcule un taux de reussite et l'ecrit dans un string pour un affichage
  *
- * @return QString
+ *
+ * @return QString s un descriptif du resultat
  */
 QString Widget::calcule_resultat() {
     int i;
@@ -214,12 +217,13 @@ QString Widget::calcule_resultat() {
 }
 
 /**
- * @brief
+ * @brief joue le son note et agit en fonction de l'etat de jeu
+ * @details la note rentrée est stockée, puis lorsque toutes les notes ont été rentrée on affiche le resultat
  *
- * @param note
+ * @param note l'id de la touche sur laquelle l'utilisateur a cliqué
  */
 void Widget::handleButton(int note) {
-    switch(note) {
+    switch(note) {//on joue le son
         case 1: {
             QSound::play("../musique/son/doM.wav");
             break;}
@@ -266,13 +270,12 @@ void Widget::handleButton(int note) {
             QSound::play("../musique/son/do3.wav");
             break;}
     }
+    //on met a jour l'historique et le log
     add_note_entree(note);
     part->writelog(note);
-
-
-    widgetNoteTape->setPlainText(texte);
-
     vectorNote.push_back(note);
+
+    //dans le cas ou on a rentré 8 notes, fin d'exercice: il faut changer la couleur des notes, afficher l'historique attendu et afficher le popup
     if(vectorNote.size() ==  8 ) {
         part->setResults(vectorNote);
 
@@ -282,25 +285,13 @@ void Widget::handleButton(int note) {
         texte = texte + "\nNotes attendues :";
         set_aff_notes(part->getListeNote());
 
+        QMessageBox *message = new QMessageBox(widgetPartition);
+        message->setText(calcule_resultat());
+        message->addButton( QMessageBox::Ok );
+        message->setWindowTitle(tr("Résultat de votre performance"));
+        message->exec();
 
-        //ANCIEN POPUP A NE PAS VIRER
-
-//        QMessageBox::information(
-//            this,
-//            tr("Résultat de votre performance"),calcule_resultat(),
-//                    QMessageBox::Ok);
-
-        //NOUVEAU POPUP MARCHE?
-            QMessageBox *message = new QMessageBox(widgetPartition);
-            message->setText(calcule_resultat());
-            message->addButton( QMessageBox::Ok );
-            message->setWindowTitle(tr("Résultat de votre performance"));
-//            message->show();
-
-            message->exec();
-        //FIN NOUVEAU POPUP
-
-
+        //fin de l'exo, on reset tout
 
         texte = "Notes rentrées : ";
         widgetNoteTape->setPlainText("Notes rentrées : ");
@@ -312,38 +303,10 @@ void Widget::handleButton(int note) {
 }
 
 
-/*
- *
- *
- *     QFile file("hiddenlogs.txt");
-    if(!file.open(QIODevice::Append | QIODevice::Text))
-        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-            return;
-        QDateTime now = QDateTime::currentDateTime();
-        QTextStream out(&file);
-        QString s;
-        switch(part) {
-        case Partition1:
-            s=("Partition1");
-            break;
-        case Partition2:
-            s=("Partition2");
-            break;
-        }
-        i = (reussi*100)/8;
-        out << "[" << now.toString("[hh:mm:ss:zzz") << "], partition: " << s << ", touche: " << note;
- *
- *
- *
- *
- *
- *
- */
-
 /**
- * @brief
+ * @brief ajoute la note entree a l'historique
  *
- * @param note
+ * @param note la note rentree
  */
 void Widget::add_note_entree(int note) {
 
@@ -399,9 +362,9 @@ void Widget::add_note_entree(int note) {
 }
 
 /**
- * @brief
+ * @brief affiche une liste de notes dans l'historique
  *
- * @param liste
+ * @param liste la liste a afficher
  */
 void Widget::set_aff_notes(QList<int> liste) {
     int i;
@@ -411,7 +374,7 @@ void Widget::set_aff_notes(QList<int> liste) {
 }
 
 /**
- * @brief
+ * @brief remet
  *
  */
 void Widget::reset() {
