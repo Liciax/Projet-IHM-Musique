@@ -22,7 +22,7 @@ Widget::Widget(QWidget *parent) :
 
 
     QTabWidget *onglets = new QTabWidget(this);
-    onglets->setGeometry(10, 10 ,790, 660); //on declare la taille des 3 fenetres
+    onglets->setGeometry(10, 10 ,790, 660); //on declare la taille des 3 fenetres onglets
     cours = new QWidget;
     exercice = new QWidget;
     raccourci = new QWidget;
@@ -488,7 +488,7 @@ void Widget::setAfficheNote(bool note)
 }
 
 /**
- * @brief destructeur
+ * @brief Destructeur de Widget
  *
  */
 Widget::~Widget()
